@@ -16,27 +16,27 @@ interface IFonts {
 }
 
 export const lightColors: IColors = {
-    primaryColor: "#A0153E",
-    secondaryColor: "#FF204E",
-    tertiraryColor: "#00224D",
-    textColor: "#ffffff",
-    secondaryTextColor: "#000000",
+    primaryColor: "#F3F8FF",
+    secondaryColor: "#7E30E1",
+    tertiraryColor: "#49108B",
+    textColor: "#000000",
+    secondaryTextColor: "#ffffff",
 }
 
 export const darkColors: IColors = {
-    primaryColor: "#A0153E",
-    secondaryColor: "#FF204E",
-    tertiraryColor: "#00224D",
+    primaryColor: "#191825",
+    secondaryColor: "#49108B",
+    tertiraryColor: "#7E30E1",
     textColor: "#ffffff",
     secondaryTextColor: "#000000",
 }
 
 export const fonts: IFonts = {
-    fontFamily: "'Raleway', sans-serif",
-    secondaryFontFamily: "'Kanit', sans-serif",
-    fontSizeSmall: "4.5rem",
-    fontSizeMedium: "3rem",
-    fontSizeLarge: "2.4rem",
-    fontSizeExtraLarge: "1.6rem"
+    fontFamily: "'Poppins', sans-serif",
+    secondaryFontFamily: "'Raleway', sans serif",
+    fontSizeSmall: "1.6rem",
+    fontSizeMedium: "2.4rem",
+    fontSizeLarge: "3rem",
+    fontSizeExtraLarge: "4.5rem"
 }
 

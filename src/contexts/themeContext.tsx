@@ -13,10 +13,10 @@ interface IThemeProviderProps {
 }
 
 export const ThemeProvider: React.FC<IThemeProviderProps> = ({children}) => {
-    const [theme, setTheme] = useState<IColors>(() => {
-        const localTheme = localStorage.getItem('portfolioTheme');
-        return localTheme ? JSON.parse(localTheme) : lightColors;
-    })
+    const localTheme = localStorage.getItem('portfolioTheme');
+    const storageTheme = localTheme ? JSON.parse(localTheme) : lightColors;
+    
+    const [theme, setTheme] = useState<IColors>(storageTheme)
 
     useEffect(() => {
         window.localStorage.setItem('portfolioTheme', JSON.stringify(theme))
