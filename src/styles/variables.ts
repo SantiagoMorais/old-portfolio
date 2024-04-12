@@ -1,7 +1,7 @@
 export interface IColors {
     primaryColor: string,
     secondaryColor: string,
-    tertiraryColor: string,
+    tertiaryColor: string,
     textColor: string,
     secondaryTextColor: string
 }
@@ -18,7 +18,7 @@ interface IFonts {
 export const lightColors: IColors = {
     primaryColor: "#F3F8FF",
     secondaryColor: "#7E30E1",
-    tertiraryColor: "#49108B",
+    tertiaryColor: "#49108B",
     textColor: "#000000",
     secondaryTextColor: "#ffffff",
 }
@@ -26,7 +26,7 @@ export const lightColors: IColors = {
 export const darkColors: IColors = {
     primaryColor: "#191825",
     secondaryColor: "#49108B",
-    tertiraryColor: "#7E30E1",
+    tertiaryColor: "#7E30E1",
     textColor: "#ffffff",
     secondaryTextColor: "#000000",
 }

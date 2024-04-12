@@ -14,6 +14,7 @@ export const GlobalStyle = createGlobalStyle`
     html {
         font-size: 62.5%;
         font-weight: 300;
+        scroll-behavior: smooth;
     }
 
     body {

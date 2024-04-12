@@ -1,4 +1,5 @@
 import { Header } from "@components/header"
+import { Hero } from "@components/hero";
 import { ThemeContext } from "@contexts/themeContext";
 import { useContext } from "react";
 import styled from "styled-components"
@@ -9,6 +10,7 @@ export const Home = () => {
     return (
         <Container theme={theme}>
             <Header />
+            <Hero />
         </Container>
     )
 }
