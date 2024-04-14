@@ -19,7 +19,7 @@ export const Header = () => {
         <Container theme={theme}>
             <div className="content">
                 <a href="#">
-                    <h1 className="logo">FS</h1>
+                    <h1 className="logo">FS<span>.</span></h1>
                 </a>
                 <div className="headerButtons">
                     <div className="buttons">
@@ -33,6 +33,7 @@ export const Header = () => {
                             <li className="item"><a href="#about-me">About me</a></li>
                             <li className="item"><a href="#skills">Skills</a></li>
                             <li className="item"><a href="#my-projects">My projects</a></li>
+                            <li className="item"><a href="#contacts">Contacts</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -42,7 +43,6 @@ export const Header = () => {
 };
 
 const Container = styled.section`
-    background-color: ${({ theme }) => theme.secondaryColor};
     display: flex;
     justify-content: center;
     align-items: center;
@@ -50,7 +50,7 @@ const Container = styled.section`
     .content {
         display: flex;
         max-width: 144rem;
-        width: 100%;
+        width: 90dvw;
         gap: 2rem;
         padding: 1rem 3rem;
         align-items: center;
@@ -58,23 +58,57 @@ const Container = styled.section`
         justify-content: space-between;
 
         a {
-            width: 8rem;
-            height: 8rem;
             text-align: center;
             transition: .3s;
+            position: relative;
     
-            &:hover {
-                opacity: .6;
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: .2rem;
+                background: #e4aa48;
+                transform: scaleX(0);
+                transform-origin: left;
+                transition: transform .5s;
+            }
+        
+            &:hover::after {
+                transform: scaleX(1);
+            }
+        
+            &:not(:hover)::after {
+                transform: scaleX(0);
+                transform-origin: right;
             }
 
             .logo {
                 color: ${({ theme }) => theme.textColor};
-                border: .2rem solid;
-                padding: 1rem;
-                border-radius: 50%;
-                font-size: ${fonts.fontSizeExtraLarge};
-                font-family: ${fonts.secondaryFontFamily};
+                font-size: ${fonts.fontSizeLarge};
+                font-family: ${fonts.fontFamily};
                 transition: .3s;
+
+                &:hover {
+                    color: ${({theme}) => theme.secondaryColor};
+                }
+
+                &:hover > span {
+                    color: ${({theme}) => theme.tertiaryColor};
+                }
+
+                &::first-letter {
+                    font-size: 150%;
+                    position: absolute;
+                    top: 1.5rem
+                }
+
+                span {
+                    font-size: 150%;
+                    color: ${({theme}) => theme.secondaryColor};
+                    transition: .3s;
+                }
             }
         }
 
@@ -97,8 +131,8 @@ const Container = styled.section`
                     transition: .3s;
                     display: none;
             
-                    &:hover {
-                        opacity: .6;
+                    &:hover > .hamburgerIcon{
+                        color: ${({ theme }) => theme.secondaryColor};
                     }
             
                     &.active > .hamburgerIcon {
@@ -120,19 +154,16 @@ const Container = styled.section`
     
                     .item {
                         font-weight: 500;
-                        padding: 1rem;
                         border-radius: 1.6rem;
                         transition: .3s;
+                        padding: 0 1rem;
                         width: fit-content;
                         cursor: pointer;
                         color: ${({ theme }) => theme.textColor};
-                
-                        &:hover {
-                            background-color: ${({ theme }) => theme.tertiaryColor};
-                        }
 
                         a {
                             color: ${({ theme }) => theme.textColor};
+                            padding: 0.5rem 0;
                         }
                     }
                 }
@@ -170,22 +201,19 @@ const Container = styled.section`
     
                     .list {
                         flex-direction: column;
-                        background-color: ${({ theme }) => theme.secondaryColor};
-                        position: absolute;
-                        right: 0;
-                        left: 0;
-                        top: -.1rem;
-                        border-radius: 0 0 1.6rem 1.6rem;
+                        border-radius: 1.6rem;
                         align-items: center;
                         gap: 1rem;
                         padding: 0 1rem;
                         height: 0;
                         overflow: hidden;
-                        transition: height .3s;
-                        z-index: 1;
+                        transition: .3s;
+                        border: .2rem solid transparent;
             
                         &.active {
-                            height: 13.5rem;
+                            height: 17rem;
+                            padding-top: 1rem;
+                            border-color: ${({theme}) => theme.secondaryColor};
                         }
             
                         &:last-child {

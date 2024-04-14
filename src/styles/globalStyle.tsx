@@ -9,6 +9,7 @@ export const GlobalStyle = createGlobalStyle`
         outline: none;
         border: none;
         font-family: ${fonts.fontFamily};
+        z-index: 1;
     }
 
     html {

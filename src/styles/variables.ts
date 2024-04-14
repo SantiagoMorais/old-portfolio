@@ -8,7 +8,6 @@ export interface IColors {
 
 interface IFonts {
     fontFamily: string,
-    secondaryFontFamily: string,
     fontSizeSmall: string,
     fontSizeMedium: string,
     fontSizeLarge: string,
@@ -16,24 +15,23 @@ interface IFonts {
 }
 
 export const lightColors: IColors = {
-    primaryColor: "#F3F8FF",
-    secondaryColor: "#7E30E1",
-    tertiaryColor: "#49108B",
+    primaryColor: "#D8D9DA",
+    secondaryColor: "#FBA834",
+    tertiaryColor: "#B6BBC4",
     textColor: "#000000",
     secondaryTextColor: "#ffffff",
 }
 
 export const darkColors: IColors = {
-    primaryColor: "#191825",
-    secondaryColor: "#49108B",
-    tertiaryColor: "#7E30E1",
+    primaryColor: "#07031A",
+    secondaryColor: "#F4CE14",
+    tertiaryColor: "#31304D",
     textColor: "#ffffff",
     secondaryTextColor: "#000000",
 }
 
 export const fonts: IFonts = {
-    fontFamily: "'Poppins', sans-serif",
-    secondaryFontFamily: "'Raleway', sans serif",
+    fontFamily: "'Roboto', sans-serif",
     fontSizeSmall: "1.6rem",
     fontSizeMedium: "2.4rem",
     fontSizeLarge: "3rem",

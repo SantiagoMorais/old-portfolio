@@ -28,8 +28,8 @@ const Container = styled.button`
     border: none;
     transition: .3s;
 
-    &:hover {
-        opacity: .6;
+    &:hover > .themeIcon {
+        color: ${({theme}) => theme.secondaryColor};
     }
 
     .themeIcon {
