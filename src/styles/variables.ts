@@ -15,7 +15,7 @@ interface IFonts {
 }
 
 export const lightColors: IColors = {
-    primaryColor: "#D8D9DA",
+    primaryColor: "#F6F5F5",
     secondaryColor: "#FBA834",
     tertiaryColor: "#B6BBC4",
     textColor: "#000000",

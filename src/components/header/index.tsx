@@ -69,7 +69,7 @@ const Container = styled.section`
                 left: 0;
                 width: 100%;
                 height: .2rem;
-                background: #e4aa48;
+                background: ${({theme}) => theme.secondaryColor};
                 transform: scaleX(0);
                 transform-origin: left;
                 transition: transform .5s;
@@ -95,7 +95,7 @@ const Container = styled.section`
                 }
 
                 &:hover > span {
-                    color: ${({theme}) => theme.tertiaryColor};
+                    color: ${({theme}) => theme.textColor};
                 }
 
                 &::first-letter {
@@ -168,6 +168,14 @@ const Container = styled.section`
                     }
                 }
             }
+        }
+    }
+
+    @media (max-width: 1100px) {
+        .content {
+            width: 95dvw;
+            justify-content: center;
+            gap: 5rem;
         }
     }
 
