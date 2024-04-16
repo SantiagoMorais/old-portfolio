@@ -6,21 +6,17 @@ import heroImage from "@assets/felipe-image.png"
 import { useContext } from "react"
 import { ThemeContext } from "@contexts/themeContext"
 import { fonts } from "@styles/variables"
-import htmlIcon from "@assets/html-icon.png"
-import cssIcon from "@assets/css-icon.webp"
-import javascriptIcon from "@assets/javascript-icon.png"
-import reactIcon from "@assets/react-icon.png"
-import typescriptIcon from "@assets/typescript-icon.png"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faCss3Alt, faHtml5, faJsSquare, faReact } from "@fortawesome/free-brands-svg-icons"
 
 export const Hero = () => {
     const { theme } = useContext(ThemeContext);
 
     const languagesList = [
-        htmlIcon,
-        cssIcon,
-        javascriptIcon,
-        reactIcon,
-        typescriptIcon
+        faHtml5,
+        faCss3Alt,
+        faJsSquare,
+        faReact,
     ]
 
     return (
@@ -31,29 +27,21 @@ export const Hero = () => {
                         <p>Hi there!</p>
                         <h1>I'm <span className="name">Felipe Santiago</span></h1>
                         <h2>Frontend Developer</h2>
+                        <p className="introduction">
+                            Passionate about crafting user-friendly interfaces with React.js and TypeScript. 
+                            See my <a href="#my-projects">projects</a> here and <a href="#contacts">contact</a> me on my social media!
+                        </p>
                     </div>
-
-                    {/* <div className="social">
-                        <a href="https://www.linkedin.com/in/felipe-santiago-morais/" target="_blank" className="link"><FontAwesomeIcon icon={faLinkedin} /></a>
-                        <a href="https://github.com/SantiagoMorais" target="_blank" className="link"><FontAwesomeIcon icon={faGithub} /></a>
-                        <a href="mailto:contatofelipesantiago@gmail.com" target="_blank" className="link"><FontAwesomeIcon icon={faAt} /></a>
-                        <a href="https://wa.me/5531996951033?text=Hi,%20there!%20I%20saw%20your%20portfolio%20and%20I'm%20interested%20in%20your%20services.%20Let's%20talk." target="_blank" className="link"><FontAwesomeIcon icon={faWhatsapp} /></a>
-                    </div> */}
-
-                    <p className="introduction">
-                        Passionate about crafting user-friendly interfaces with React.js and TypeScript.
-                        <br />
-                        See my <a href="#my-projects">projects</a> here and <a href="#contacts">contact</a> me on my social media!
-                    </p>
-
                     <ul className="languages">
                         {languagesList.map((language, index) =>
                             <li className="language" key={index}>
-                                <img src={language} alt="programming language icon" />
+                                <FontAwesomeIcon className="icon" icon={language} />
                             </li>
                         )}
+                        <li className="language">
+                            <div className="customIcon">TS</div>
+                        </li>
                     </ul>
-
                 </div>
 
                 <div className="imgHero">
@@ -77,13 +65,17 @@ const Container = styled.section`
         justify-content: center;
         max-width: 144rem;
         box-shadow: 0 0 1rem;
-        border-radius: 1.6rem;
+        border-radius: .8rem;
         overflow: hidden;
 
+        /* test */
+        background-color: ${({ theme }) => theme.primaryColor};
+        transition: .3s;
+
         .info {
-            min-width: 30rem;
             height: 100%;
             background-color: ${({ theme }) => theme.primaryColor};
+            transition: background-color .3s;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -95,58 +87,64 @@ const Container = styled.section`
             
             .textHero {
                 color: ${({ theme }) => theme.textColor};
-                display: flex;
-                flex-direction: column;
-
-                p {
+                width: 80%;
+                p, h2 {
                     font-size: ${fonts.fontSizeLarge};
                     font-weight: 400;
+                    transition: .3s;
                 }
                 
                 h1 {
                     font-size: ${fonts.fontSizeExtraLarge};
                     font-weight: 400;
+                    transition: .3s;
 
                     .name {
                         font-weight: 600;
-                        letter-spacing: .2rem;
                     }                                       
                 }
 
                 h2 {
-                    font-size: ${fonts.fontSizeLarge};
-                    font-weight: 400;
                     padding: .5rem 1rem;
-                    margin: .5rem;
+                    margin: .5rem 0;
                     background: ${({ theme }) => theme.secondaryColor};
                     color: ${({ theme }) => theme.secondaryTextColor};
                     width: fit-content;
                     border-radius: .8rem;
                 }
-            }
 
-            .introduction {
-                color: ${({ theme }) => theme.textColor};
-                font-weight: 500;
-                text-align: center;
+                .introduction {
+                    margin-top: 1rem;
+                    color: ${({ theme }) => theme.textColor};
+                    font-weight: 500;
+                    font-size: ${fonts.fontSizeSmall};
+    
+                    a {
+                        cursor: pointer;
+                        color: ${({ theme }) => theme.textColor};
+                        transition: .3s;
+                        text-decoration: underline;
 
-                a {
-                    text-transform: uppercase;
-                    cursor: pointer;
-                    color: ${({ theme }) => theme.secondaryColor};
+                        &:hover {
+                            color: ${({ theme }) => theme.secondaryColor};
+                        }
+                    }
                 }
             }
+
 
             .languages {
                 display: flex;
                 gap: 2rem;
+                flex-wrap: wrap;
+                justify-content: center;
                 
                 .language {
                     display: flex;
                     border-radius: .8rem;
-                    cursor: pointer;
                     transition: .3s;
                     position: relative;
+                    color: ${({theme}) => theme.textColor};
             
                     &::after {
                         content: '';
@@ -155,7 +153,7 @@ const Container = styled.section`
                         left: 0;
                         width: 100%;
                         height: .2rem;
-                        background: ${({theme}) => theme.secondaryColor};
+                        background: ${({ theme }) => theme.secondaryColor};
                         transform: scaleX(0);
                         transform-origin: left;
                         transition: transform .5s;
@@ -170,28 +168,37 @@ const Container = styled.section`
                         transform-origin: right;
                     }
 
-                    img {
-                        width: 5rem;
-                        height: auto;
+                    &:hover {
+                        color: ${({theme}) => theme.secondaryColor};
+                    }
+
+                    .icon {
+                        font-size: 4rem;
+                    }
+
+                    .customIcon {
+                        background-color: ${({theme}) => theme.textColor};
+                        color: ${({theme}) => theme.secondaryTextColor};
+                        width: 4rem;
+                        height: 4rem;
                         border-radius: .8rem;
+                        border: .2rem solid ${({theme}) => theme.primaryColor};
+                        display: flex;
+                        justify-content: end;
+                        align-items: end;
+                        padding: 0 .2rem;
+                        font-size: 2rem;
+                        font-weight: 600;
+                        cursor: default;
+                        line-height: .95;
+                        transition: .3s;
+
+                        &:hover {
+                            background-color: ${({theme}) => theme.secondaryColor};
+                        }
                     }
                 }
             }
-
-            /* .social {
-                display: flex;
-                gap: 2rem;
-
-                .link {
-                    font-size: ${fonts.fontSizeLarge};
-                    color: ${({ theme }) => theme.textColor};
-                    transition: .3s;
-
-                    &:hover {
-                        color: ${({ theme }) => theme.secondaryColor}
-                    }
-                }
-            } */
         }
 
         .imgHero {
@@ -203,13 +210,20 @@ const Container = styled.section`
             justify-content: center;
             align-items: center;
             position: relative;
-            min-width: 20rem;
+            
+            /* tests */
+            /* width: 100%;
+            border-radius: 50%;
+            height: auto;
+            border: 2rem solid ${({theme}) => theme.primaryColor};
+            transition: border-color .3s; */
 
             &::after {
                 content: '';
                 height: 100%;
                 width: 100%;
                 background-color: ${({ theme }) => theme.tertiaryColor};
+                transition: background-color .3s;
                 position: absolute;
                 opacity: .6;
             }
@@ -219,14 +233,13 @@ const Container = styled.section`
                 height: 100%;
                 object-fit: cover;
                 filter: drop-shadow(0 0 .3rem ${({ theme }) => theme.textColor});
+                transition: filter .3s;
             }
         }
     }
 
     @media (max-width: 1100px) {
         .content {
-            width: 95dvw;
-    
             .info {
                 flex: 3;
                 .textHero {
@@ -235,7 +248,7 @@ const Container = styled.section`
                     }
                     
                     h1 {
-                        font-size: ${fonts.fontSizeLarge};                                
+                        font-size: ${fonts.fontSizeLarge};
                     }
     
                     h2 {
@@ -254,6 +267,60 @@ const Container = styled.section`
 
             .imgHero {
                 flex: 2;
+            }
+        }
+    }
+
+    @media (max-width: 600px) {
+        .content {
+            flex-direction: column;
+    
+            .info {
+                padding: 3rem 2rem;
+                flex: 1;
+                flex-basis: content;
+                width: 100%;
+                
+                .textHero {
+                    width: 100%;
+    
+                    p, h2 {
+                        font-size: ${fonts.fontSizeMedium};
+                    }
+                    
+                    h1 {
+                        font-size: ${fonts.fontSizeLarge};
+                        font-weight: 400;                                    
+                    }
+    
+                    h2 {
+                        padding: .3rem .5rem;
+                    }
+                }
+
+                .languages {        
+                    gap: 1rem;
+                    .language {
+                        .icon {
+                            font-size: 3rem;
+                        }
+    
+                        .customIcon {
+                            width: 3rem;
+                            height: 3rem;
+                            border-radius: .6rem;
+                            padding: 0 .1rem;
+                            font-size: 1.5rem;
+                            font-weight: 500;
+                        }
+                    }
+                }
+            }
+    
+            .imgHero {
+                flex: 1;
+                flex-basis: content;
+                width: 100%;
             }
         }
     }

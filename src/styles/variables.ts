@@ -23,9 +23,9 @@ export const lightColors: IColors = {
 }
 
 export const darkColors: IColors = {
-    primaryColor: "#07031A",
+    primaryColor: "#000000",
     secondaryColor: "#F4CE14",
-    tertiaryColor: "#31304D",
+    tertiaryColor: "#191919",
     textColor: "#ffffff",
     secondaryTextColor: "#000000",
 }

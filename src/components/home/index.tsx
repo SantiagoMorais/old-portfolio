@@ -4,6 +4,7 @@ import { ThemeContext } from "@contexts/themeContext";
 import { useContext } from "react";
 import styled from "styled-components"
 import backgroundImage from "@assets/background-image.jpg"
+import { AboutMe } from "@components/about";
 
 export const Home = () => {
     const { theme } = useContext(ThemeContext);
@@ -13,6 +14,7 @@ export const Home = () => {
             <div className="backgroundImage"></div>
             <Header />
             <Hero />
+            <AboutMe />
         </Container>
     )
 }
@@ -22,10 +24,11 @@ const Container = styled.main`
   min-height: 100dvh;
   transition: background-color .3s;
   position: relative;
+  overflow-x: hidden;
 
   .backgroundImage {
     width: 100vw;
-    height: 100dvh;
+    height: 100%;
     background: url(${backgroundImage}) no-repeat center center;
     background-size: cover;
     position: absolute;

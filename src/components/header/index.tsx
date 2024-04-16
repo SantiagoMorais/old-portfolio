@@ -46,6 +46,7 @@ const Container = styled.section`
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
     
     .content {
         display: flex;
