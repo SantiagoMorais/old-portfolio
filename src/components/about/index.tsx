@@ -1,6 +1,7 @@
 import { ThemeContext } from "@contexts/themeContext";
 import { faFlask, faLaptopCode, faTools } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { componentsGap, fonts } from "@styles/variables";
 import { useContext } from "react";
 import styled from "styled-components"
 
@@ -10,36 +11,34 @@ export const AboutMe = () => {
     return (
         <Container theme={theme}>
             <div className="content">
-                <h2 className="title">About me</h2>
-                <h3 className="subtitle">I'm Felipe Santiago, Front-End Engineer</h3>
+                <h2 className="title">About me <span></span></h2>
+                <h3 className="subtitle">Felipe Santiago, Front-End Engineer</h3>
 
                 <div className="aboutMe">
                     <p className="summarize">
-                        Since starting my programming journey in July 2023, I've been deeply immersed in web development, focusing on HTML, CSS, JavaScript, and React JS.
-                        Consistently prioritizing responsive design and dynamic functionalities, my projects aim to improve user experiences and interfaces.
-                        Adopting TypeScript has been transformative, enhancing code quality, minimizing bugs, and boosting security.
+                        Since starting my programming journey in July 2023, I've been deeply immersed in web development, focusing on HTML, CSS, JavaScript, and React JS. After a while, I adopt TypeScript and that was transformative, to enhance the code quality.
                         I'm driven by the opportunity to use emerging technologies to solve problems and simplify daily tasks for people.
                     </p>
 
                     <div className="whatIDo">
-                        <h3 className="title">What I Do?</h3>
+                        <h3 className="whatIDoTitle">What I Do?</h3>
                         <ul className="abilitiesList">
                             <li className="ability">
-                            <FontAwesomeIcon icon={faLaptopCode} />
+                                <FontAwesomeIcon icon={faLaptopCode} className="icon"/>
                                 <div>
                                     <h4>Frontend Development</h4>
-                                    <p>I create responsive desing and dynamic functionalities ot improve user experiences and interfaces</p>
+                                    <p>I create responsive web desing and dynamic functionalities, focused on React, to improve user experiences and interfaces.</p>
                                 </div>
                             </li>
                             <li className="ability">
-                            <FontAwesomeIcon icon={faTools} />
+                                <FontAwesomeIcon icon={faTools} className="icon"/>
                                 <div>
                                     <h4>TypeScript</h4>
                                     <p>Adopting TypeScript on my projects has been transformative, enhancing code quality, minimizing bugs, and boosting security.</p>
                                 </div>
                             </li>
                             <li className="ability">
-                            <FontAwesomeIcon icon={faFlask} />
+                                <FontAwesomeIcon icon={faFlask} className="icon"/>
                                 <div>
                                     <h4>Integrative Tests</h4>
                                     <p>
@@ -59,8 +58,8 @@ const Container = styled.section`
     width: 100%;
     display: flex;
     justify-content: center;
-    padding: 1rem;
-    
+    margin-bottom: ${componentsGap};
+
     .content {
         display: flex;
         flex-direction: column;
@@ -72,12 +71,120 @@ const Container = styled.section`
         border-radius: .8rem;
         overflow: hidden;
         padding: 2rem;
-        background-color: ${({theme}) => theme.primaryColor};
-        color: ${({theme}) => theme.textColor};
+        background-color: ${({ theme }) => theme.primaryColor};
+        color: ${({ theme }) => theme.textColor};
         transition: .3s;
+        gap: 2rem;
 
         .title {
-            
+            padding: 2rem;
+            border: .1rem solid ${({ theme }) => theme.textColor};
+            width: 100%;
+            text-align: center;
+            font-size: ${fonts.fontSizeExtraLarge};
+            text-transform: uppercase;
+            letter-spacing: .8rem;
+            font-weight: 500;
+            background-color: ${({theme}) => theme.tertiaryColor};
+            border-radius: 0.8rem;
+            transition: background-color .3s;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: ${fonts.fontSizeLarge};
+            font-weight: 400;
+        }
+
+        .aboutMe {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+
+            .summarize {
+                text-align: justify;
+                font-size: ${fonts.fontSizeSmall};
+                font-weight: 400;
+            }
+
+            .whatIDo {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                .whatIDoTitle {
+                    margin-bottom: 1rem;
+                    font-size: ${fonts.fontSizeMedium};
+                    text-transform: uppercase;
+                    font-weight: 500;
+                    border-bottom: .2rem solid ${({ theme }) => theme.secondaryColor};
+                    width: fit-content;
+                    padding: 0 2rem;
+
+                }
+
+                .abilitiesList {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 2rem;
+                    justify-content: space-around;
+
+                    .ability {
+                        flex: 1;
+                        display: flex;
+                        align-items: center;
+                        gap: 1rem;
+                        min-width: 20rem;
+                        max-width: 40rem;
+                        
+
+                        .icon {
+                            font-size: 5rem;
+                            color: ${({theme}) => theme.secondaryColor};
+                            width: 5rem;
+                        }
+
+                        div {
+                            display: flex;
+                            flex-direction: column;
+                            gap: .5rem;
+
+                            h4 {
+                                font-size: ${fonts.fontSizeSmall};
+                                font-weight: 800;
+                            }
+
+                            p {
+                                font-size: ${fonts.fontSizeSmall};
+                                font-weight: 400;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @media (max-width: 600px) {
+        .content {  
+            .title {
+                padding: 1rem;
+                font-size: ${fonts.fontSizeLarge};
+                letter-spacing: .6rem;
+            }
+    
+            .subtitle {
+                font-size: ${fonts.fontSizeMedium};
+            }
+
+            .aboutMe {
+                .whatIDo {
+                    .abilitiesList {
+                        .ability {
+                        }
+                    }
+                }
+            }
         }
     }
 

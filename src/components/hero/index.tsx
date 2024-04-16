@@ -5,7 +5,7 @@ import styled from "styled-components"
 import heroImage from "@assets/felipe-image.png"
 import { useContext } from "react"
 import { ThemeContext } from "@contexts/themeContext"
-import { fonts } from "@styles/variables"
+import { componentsGap, fonts } from "@styles/variables"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCss3Alt, faHtml5, faJsSquare, faReact } from "@fortawesome/free-brands-svg-icons"
 
@@ -26,7 +26,7 @@ export const Hero = () => {
                     <div className="textHero">
                         <p>Hi there!</p>
                         <h1>I'm <span className="name">Felipe Santiago</span></h1>
-                        <h2>Frontend Developer</h2>
+                        <h2>Frontend Engineer</h2>
                         <p className="introduction">
                             Passionate about crafting user-friendly interfaces with React.js and TypeScript. 
                             See my <a href="#my-projects">projects</a> here and <a href="#contacts">contact</a> me on my social media!
@@ -57,6 +57,7 @@ const Container = styled.section`
     display: flex;
     justify-content: center;
     padding: 1rem;
+    margin-bottom: ${componentsGap};
     
     .content {
         display: flex;
@@ -67,8 +68,6 @@ const Container = styled.section`
         box-shadow: 0 0 1rem;
         border-radius: .8rem;
         overflow: hidden;
-
-        /* test */
         background-color: ${({ theme }) => theme.primaryColor};
         transition: .3s;
 
@@ -83,7 +82,7 @@ const Container = styled.section`
             gap: 2rem;
             flex: 2;
             flex-basis: 0;
-            padding: 2rem;
+            padding: 2rem 0 2rem 2rem;
             
             .textHero {
                 color: ${({ theme }) => theme.textColor};
@@ -116,14 +115,17 @@ const Container = styled.section`
                 .introduction {
                     margin-top: 1rem;
                     color: ${({ theme }) => theme.textColor};
-                    font-weight: 500;
+                    font-weight: 400;
                     font-size: ${fonts.fontSizeSmall};
+                    text-align: justify;
+                    max-width: 50rem;
     
                     a {
                         cursor: pointer;
                         color: ${({ theme }) => theme.textColor};
                         transition: .3s;
                         text-decoration: underline;
+                        font-weight: 500;
 
                         &:hover {
                             color: ${({ theme }) => theme.secondaryColor};
@@ -212,11 +214,11 @@ const Container = styled.section`
             position: relative;
             
             /* tests */
-            /* width: 100%;
+            width: 100%;
             border-radius: 50%;
             height: auto;
             border: 2rem solid ${({theme}) => theme.primaryColor};
-            transition: border-color .3s; */
+            transition: border-color .3s;
 
             &::after {
                 content: '';
@@ -276,7 +278,7 @@ const Container = styled.section`
             flex-direction: column;
     
             .info {
-                padding: 3rem 2rem;
+                padding: 3rem 2rem 0 2rem;
                 flex: 1;
                 flex-basis: content;
                 width: 100%;

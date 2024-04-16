@@ -25,6 +25,8 @@ const Container = styled.main`
   transition: background-color .3s;
   position: relative;
   overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
 
   .backgroundImage {
     width: 100vw;
