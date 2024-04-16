@@ -47,11 +47,12 @@ const Container = styled.section`
     justify-content: center;
     align-items: center;
     width: 100%;
+    padding: 1rem 5dvw;
     
     .content {
         display: flex;
         max-width: 144rem;
-        width: 90dvw;
+        width: 100%;
         gap: 2rem;
         padding: 1rem 3rem;
         align-items: center;

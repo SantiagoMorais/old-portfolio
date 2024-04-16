@@ -24,11 +24,11 @@ export const Hero = () => {
             <div className="content">
                 <div className="info">
                     <div className="textHero">
-                        <p>Hi there!</p>
-                        <h1>I'm <span className="name">Felipe Santiago</span></h1>
+                        <p>Hi there! I'm </p>
+                        <h1><span className="name">Felipe Santiago</span></h1>
                         <h2>Frontend Engineer</h2>
                         <p className="introduction">
-                            Passionate about crafting user-friendly interfaces with React.js and TypeScript. 
+                            Passionate about crafting user-friendly interfaces with React.js and TypeScript.
                             See my <a href="#my-projects">projects</a> here and <a href="#contacts">contact</a> me on my social media!
                         </p>
                     </div>
@@ -56,13 +56,13 @@ const Container = styled.section`
     width: 100%;
     display: flex;
     justify-content: center;
-    padding: 1rem;
+    padding: 0 5dvw;
     margin-bottom: ${componentsGap};
     
     .content {
         display: flex;
+        width: 100%;
         align-items: center;
-        width: 90dvw;
         justify-content: center;
         max-width: 144rem;
         box-shadow: 0 0 1rem;
@@ -80,13 +80,15 @@ const Container = styled.section`
             justify-content: center;
             align-items: center;
             gap: 2rem;
-            flex: 2;
-            flex-basis: 0;
-            padding: 2rem 0 2rem 2rem;
+            width: 50%;
             
             .textHero {
                 color: ${({ theme }) => theme.textColor};
                 width: 80%;
+                display: flex;
+                flex-direction: column;
+                gap: .5rem;
+
                 p, h2 {
                     font-size: ${fonts.fontSizeLarge};
                     font-weight: 400;
@@ -105,7 +107,7 @@ const Container = styled.section`
 
                 h2 {
                     padding: .5rem 1rem;
-                    margin: .5rem 0;
+                    margin-top: .5rem;
                     background: ${({ theme }) => theme.secondaryColor};
                     color: ${({ theme }) => theme.secondaryTextColor};
                     width: fit-content;
@@ -116,7 +118,7 @@ const Container = styled.section`
                     margin-top: 1rem;
                     color: ${({ theme }) => theme.textColor};
                     font-weight: 400;
-                    font-size: ${fonts.fontSizeSmall};
+                    font-size: ${fonts.fontSizeMedium};
                     text-align: justify;
                     max-width: 50rem;
     
@@ -146,7 +148,7 @@ const Container = styled.section`
                     border-radius: .8rem;
                     transition: .3s;
                     position: relative;
-                    color: ${({theme}) => theme.textColor};
+                    color: ${({ theme }) => theme.textColor};
             
                     &::after {
                         content: '';
@@ -171,32 +173,32 @@ const Container = styled.section`
                     }
 
                     &:hover {
-                        color: ${({theme}) => theme.secondaryColor};
+                        color: ${({ theme }) => theme.secondaryColor};
                     }
 
                     .icon {
-                        font-size: 4rem;
+                        font-size: 5rem;
                     }
 
                     .customIcon {
-                        background-color: ${({theme}) => theme.textColor};
-                        color: ${({theme}) => theme.secondaryTextColor};
-                        width: 4rem;
-                        height: 4rem;
+                        background-color: ${({ theme }) => theme.textColor};
+                        color: ${({ theme }) => theme.secondaryTextColor};
+                        width: 5rem;
+                        height: 5rem;
                         border-radius: .8rem;
-                        border: .2rem solid ${({theme}) => theme.primaryColor};
+                        border: .2rem solid ${({ theme }) => theme.primaryColor};
                         display: flex;
                         justify-content: end;
                         align-items: end;
-                        padding: 0 .2rem;
-                        font-size: 2rem;
+                        padding: 0 .3rem;
+                        font-size: 2.6rem;
                         font-weight: 600;
                         cursor: default;
                         line-height: .95;
-                        transition: .3s;
+                        transition: background-color .3s;
 
                         &:hover {
-                            background-color: ${({theme}) => theme.secondaryColor};
+                            background-color: ${({ theme }) => theme.secondaryColor};
                         }
                     }
                 }
@@ -204,21 +206,18 @@ const Container = styled.section`
         }
 
         .imgHero {
-            flex: 1;
-            flex-basis: 0;
-            height: 100%;
             overflow: hidden;
             display: flex;
             justify-content: center;
             align-items: center;
             position: relative;
-            
-            /* tests */
-            width: 100%;
+            width: 50%;
+            max-width: 50rem;
             border-radius: 50%;
-            height: auto;
-            border: 2rem solid ${({theme}) => theme.primaryColor};
-            transition: border-color .3s;
+            max-height: 50rem;
+            margin: 2rem;
+            box-shadow: 1rem 1rem 2rem ${({theme}) => theme.tertiaryColor},
+                        0 0 0 1rem ${({theme}) => theme.tertiaryColor} inset;
 
             &::after {
                 content: '';
@@ -242,33 +241,41 @@ const Container = styled.section`
 
     @media (max-width: 1100px) {
         .content {
+            padding: 2rem 0;
+
             .info {
-                flex: 3;
                 .textHero {
-                    p {
+                    p, h2 {
                         font-size: ${fonts.fontSizeMedium};
                     }
                     
                     h1 {
                         font-size: ${fonts.fontSizeLarge};
                     }
-    
-                    h2 {
-                        font-size: ${fonts.fontSizeMedium};
+
+                    .introduction {
+                        font-size: ${fonts.fontSizeSmall};
                     }
                 }
-    
+
                 .languages {
+                    gap: 1.5rem;
+                    
                     .language {
-                        img {
+                        .icon {
+                            font-size: 4rem;
+                        }
+    
+                        .customIcon {
                             width: 4rem;
+                            height: 4rem;
+                            padding: 0 .2rem;
+                            font-size: 2.1rem;
+                            font-weight: 500;
+                            cursor: default;
                         }
                     }
                 }
-            }
-
-            .imgHero {
-                flex: 2;
             }
         }
     }
@@ -276,10 +283,10 @@ const Container = styled.section`
     @media (max-width: 600px) {
         .content {
             flex-direction: column;
+            padding: 0;
     
             .info {
                 padding: 3rem 2rem 0 2rem;
-                flex: 1;
                 flex-basis: content;
                 width: 100%;
                 
@@ -320,9 +327,7 @@ const Container = styled.section`
             }
     
             .imgHero {
-                flex: 1;
-                flex-basis: content;
-                width: 100%;
+                width: 90%;
             }
         }
     }

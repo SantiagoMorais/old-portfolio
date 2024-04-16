@@ -35,8 +35,8 @@ export const fonts: IFonts = {
     fontSizeSmall: "1.6rem",
     fontSizeMedium: "2.4rem",
     fontSizeLarge: "3rem",
-    fontSizeExtraLarge: "4.5rem"
+    fontSizeExtraLarge: "4.5rem",
 }
 
-export const componentsGap = "2rem";
+export const componentsGap = "3rem";
 

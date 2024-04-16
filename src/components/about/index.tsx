@@ -21,7 +21,7 @@ export const AboutMe = () => {
                     </p>
 
                     <div className="whatIDo">
-                        <h3 className="whatIDoTitle">What I Do?</h3>
+                        <h3 className="whatIDoTitle">What I Do:</h3>
                         <ul className="abilitiesList">
                             <li className="ability">
                                 <FontAwesomeIcon icon={faLaptopCode} className="icon"/>
@@ -59,12 +59,12 @@ const Container = styled.section`
     display: flex;
     justify-content: center;
     margin-bottom: ${componentsGap};
+    padding: 0 5dvw;
 
     .content {
         display: flex;
         flex-direction: column;
         align-items: center;
-        width: 90dvw;
         justify-content: center;
         max-width: 144rem;
         box-shadow: 0 0 1rem #000000;
@@ -133,11 +133,11 @@ const Container = styled.section`
                         flex: 1;
                         display: flex;
                         align-items: center;
+                        justify-content: start;
                         gap: 1rem;
                         min-width: 20rem;
                         max-width: 40rem;
                         
-
                         .icon {
                             font-size: 5rem;
                             color: ${({theme}) => theme.secondaryColor};
@@ -148,6 +148,7 @@ const Container = styled.section`
                             display: flex;
                             flex-direction: column;
                             gap: .5rem;
+                            height: 100%;
 
                             h4 {
                                 font-size: ${fonts.fontSizeSmall};
