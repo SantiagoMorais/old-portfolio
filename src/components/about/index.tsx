@@ -62,6 +62,7 @@ const Container = styled.section`
     padding: 0 5dvw;
 
     .content {
+        width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;

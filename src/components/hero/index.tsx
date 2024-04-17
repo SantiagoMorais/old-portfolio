@@ -181,7 +181,7 @@ const Container = styled.section`
                     }
 
                     .customIcon {
-                        user-select: none;
+                        user-select: nonek;
                         background-color: ${({ theme }) => theme.textColor};
                         color: ${({ theme }) => theme.secondaryTextColor};
                         width: 5rem;

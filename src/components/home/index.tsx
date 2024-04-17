@@ -5,6 +5,7 @@ import { useContext } from "react";
 import styled from "styled-components"
 import backgroundImage from "@assets/background-image.jpg"
 import { AboutMe } from "@components/about";
+import { Skills } from "@components/skills";
 
 export const Home = () => {
     const { theme } = useContext(ThemeContext);
@@ -15,6 +16,7 @@ export const Home = () => {
             <Header />
             <Hero />
             <AboutMe />
+            <Skills />
         </Container>
     )
 }

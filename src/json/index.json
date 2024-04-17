@@ -1,0 +1,55 @@
+{
+    "skills": [
+        {
+            "category": "Technical Proficiencies",
+            "icon": "code",
+            "list": [
+                "React JS",
+                "JavaScript",
+                "TypeScript",
+                "HTML5",
+                "CSS3",
+                "Git",
+                "Redux",
+                "Context API",
+                "Jest",
+                "Testing Library",
+                "Vitest"
+            ]
+        },
+        {
+            "category": "Tools",
+            "icon": "tools",
+            "list": [
+                "Visual Studio Code",
+                "GitHub",
+                "Git",
+                "Figma"
+            ]
+        },
+        {
+            "category": "React Libraries",
+            "icon": "book",
+            "list": [
+                "Styled-Components",
+                "Axios",
+                "React-Query",
+                "React-Hook-Form",
+                "React-Router-Dom"
+            ]
+        },
+        {
+            "category": "Key Attributes",
+            "icon": "key",
+            "list": [
+                "Organized",
+                "Great Receiving Feedbacks",
+                "Proactive Collaboration",
+                "Commitment",
+                "Adaptability",
+                "Resilience",
+                "Attention to the Details"
+            ]
+        }
+    ]
+}
