@@ -30,9 +30,9 @@ export const Header = () => {
                     </div>
                     <nav className="navigation">
                         <ul className={`list ${active ? "active" : ""}`}>
-                            <li className="item"><a href="#about-me">About me</a></li>
+                            <li className="item"><a href="#aboutMe">About me</a></li>
                             <li className="item"><a href="#skills">Skills</a></li>
-                            <li className="item"><a href="#my-projects">My projects</a></li>
+                            <li className="item"><a href="#myProjects">My projects</a></li>
                             <li className="item"><a href="#contacts">Contacts</a></li>
                         </ul>
                     </nav>
@@ -160,9 +160,9 @@ const Container = styled.section`
                         margin: 0.5rem 1rem;
                         
                         a {
-
                             color: ${({ theme }) => theme.textColor};
                             width: 100%;
+                            padding-bottom: .5rem;
                         }
                     }
                 }
@@ -222,7 +222,6 @@ const Container = styled.section`
                         .item {
                             width: 100%;
                             text-align: center;
-                            padding: .5rem;
                         }
                     }
                 }

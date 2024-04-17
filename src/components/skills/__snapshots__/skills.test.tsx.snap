@@ -62,32 +62,12 @@ exports[`<Skills /> > should render the list skills correctly 1`] = `
       <li
         class="item"
       >
-        Git
-      </li>
-      <li
-        class="item"
-      >
         Redux
       </li>
       <li
         class="item"
       >
         Context API
-      </li>
-      <li
-        class="item"
-      >
-        Jest
-      </li>
-      <li
-        class="item"
-      >
-        Testing Library
-      </li>
-      <li
-        class="item"
-      >
-        Vitest
       </li>
     </ul>
   </div>
@@ -140,6 +120,21 @@ exports[`<Skills /> > should render the list skills correctly 1`] = `
         class="item"
       >
         Figma
+      </li>
+      <li
+        class="item"
+      >
+        Jest
+      </li>
+      <li
+        class="item"
+      >
+        Testing Library
+      </li>
+      <li
+        class="item"
+      >
+        Vitest
       </li>
     </ul>
   </div>

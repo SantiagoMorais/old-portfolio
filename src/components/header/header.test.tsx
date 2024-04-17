@@ -37,7 +37,7 @@ describe('<NavBar />', () => {
         render(<Header />);
         const aboutMe = screen.getByText(/about me/i)
         expect(aboutMe).toBeInTheDocument();
-        expect(aboutMe).toHaveAttribute("href", "#about-me")
+        expect(aboutMe).toHaveAttribute("href", "#aboutMe")
     })
     
     it("should the 'Skills' button redirect to the 'skills' section correctly" , () => {
@@ -51,7 +51,7 @@ describe('<NavBar />', () => {
         render(<Header />);
         const myProjects = screen.getByText(/My projects/i)
         expect(myProjects).toBeInTheDocument();
-        expect(myProjects).toHaveAttribute("href", "#my-projects")
+        expect(myProjects).toHaveAttribute("href", "#myProjects")
     })
 
     it("should the 'Contacts' button redirect to the 'contacts' section correctly" , () => {

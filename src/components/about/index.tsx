@@ -7,12 +7,15 @@ import styled from "styled-components"
 
 export const AboutMe = () => {
     const { theme } = useContext(ThemeContext);
+    
+    const handleCurriculum = () => {
+
+    }
 
     return (
-        <Container theme={theme}>
+        <Container theme={theme} id="aboutMe">
             <div className="content">
-                <h2 className="title">About me <span></span></h2>
-                <h3 className="subtitle">Felipe Santiago, Front-End Engineer</h3>
+                <h2 className="title">About me</h2>
 
                 <div className="aboutMe">
                     <p className="summarize">
@@ -24,21 +27,21 @@ export const AboutMe = () => {
                         <h3 className="whatIDoTitle">What I Do:</h3>
                         <ul className="abilitiesList">
                             <li className="ability">
-                                <FontAwesomeIcon icon={faLaptopCode} className="icon"/>
+                                <FontAwesomeIcon icon={faLaptopCode} className="icon" />
                                 <div>
                                     <h4>Frontend Development</h4>
                                     <p>I create responsive web desing and dynamic functionalities, focused on React, to improve user experiences and interfaces.</p>
                                 </div>
                             </li>
                             <li className="ability">
-                                <FontAwesomeIcon icon={faTools} className="icon"/>
+                                <FontAwesomeIcon icon={faTools} className="icon" />
                                 <div>
                                     <h4>TypeScript</h4>
                                     <p>Adopting TypeScript on my projects has been transformative, enhancing code quality, minimizing bugs, and boosting security.</p>
                                 </div>
                             </li>
                             <li className="ability">
-                                <FontAwesomeIcon icon={faFlask} className="icon"/>
+                                <FontAwesomeIcon icon={faFlask} className="icon" />
                                 <div>
                                     <h4>Integrative Tests</h4>
                                     <p>
@@ -48,6 +51,8 @@ export const AboutMe = () => {
                             </li>
                         </ul>
                     </div>
+
+                    <button className="curriculum" onClick={() => handleCurriculum}><p>See my <span>Curriculum Vitae</span></p></button>
                 </div>
             </div>
         </Container>
@@ -86,27 +91,69 @@ const Container = styled.section`
             text-transform: uppercase;
             letter-spacing: .8rem;
             font-weight: 500;
-            background-color: ${({theme}) => theme.tertiaryColor};
+            background-color: ${({ theme }) => theme.tertiaryColor};
             border-radius: 0.8rem;
             transition: background-color .3s;
         }
 
-        .subtitle {
+        .curriculum {
             text-align: center;
-            font-size: ${fonts.fontSizeLarge};
-            font-weight: 400;
+            color: ${({ theme }) => theme.secondaryTextColor};
+            font-size: ${fonts.fontSizeMedium};
+            cursor: pointer;
+            border: .1rem solid transparent;
+            padding: 1rem;
+            border-radius: 0 1.6rem 0 1.6rem;
+            background-color: ${({theme}) => theme.secondaryColor};
+            transition: .3s;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+
+            &::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: 100%;
+                background: rgba(0,0,0,.3);
+                transform: scaleX(0);
+                transform-origin: left;
+                transition: transform .5s;
+                z-index: 0;
+              }
+              
+            &:hover::before {
+                transform: scaleX(1);
+            }
+
+            &:not(:hover)::before {
+                transform: scaleX(0);
+                transform-origin: right;
+            }
+
+            p {
+                position: relative;
+
+                span {
+                    font-weight: 500;
+                    color: ${({ theme }) => theme.secondaryTextColor};
+                }
+            }
         }
 
         .aboutMe {
             display: flex;
             flex-direction: column;
             gap: 2rem;
+            align-items: center;
 
             .summarize {
                 text-align: justify;
                 font-size: ${fonts.fontSizeSmall};
-                font-weight: 400;
             }
+
 
             .whatIDo {
                 display: flex;
@@ -142,7 +189,7 @@ const Container = styled.section`
                         
                         .icon {
                             font-size: 5rem;
-                            color: ${({theme}) => theme.secondaryColor};
+                            color: ${({ theme }) => theme.secondaryColor};
                             width: 5rem;
                         }
 

@@ -9,12 +9,8 @@
                 "TypeScript",
                 "HTML5",
                 "CSS3",
-                "Git",
                 "Redux",
-                "Context API",
-                "Jest",
-                "Testing Library",
-                "Vitest"
+                "Context API"
             ]
         },
         {
@@ -24,7 +20,10 @@
                 "Visual Studio Code",
                 "GitHub",
                 "Git",
-                "Figma"
+                "Figma",
+                "Jest",
+                "Testing Library",
+                "Vitest"
             ]
         },
         {

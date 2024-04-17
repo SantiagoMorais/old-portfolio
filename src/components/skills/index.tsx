@@ -20,7 +20,7 @@ export const Skills = () => {
     const { theme } = useContext(ThemeContext);
 
     return (
-        <Container theme={theme}>
+        <Container theme={theme} id="skills">
             <div className="content">
                 <h2 className="title">Skills</h2>
                 <div className="skillLists">

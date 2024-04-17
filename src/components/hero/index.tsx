@@ -181,7 +181,7 @@ const Container = styled.section`
                     }
 
                     .customIcon {
-                        user-select: nonek;
+                        user-select: none;
                         background-color: ${({ theme }) => theme.textColor};
                         color: ${({ theme }) => theme.secondaryTextColor};
                         width: 5rem;
@@ -196,7 +196,7 @@ const Container = styled.section`
                         font-weight: 600;
                         cursor: default;
                         line-height: .95;
-                        transition: background-color .3s;
+                        transition: .3s;
 
                         &:hover {
                             background-color: ${({ theme }) => theme.secondaryColor};
