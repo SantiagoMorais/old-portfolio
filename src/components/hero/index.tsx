@@ -219,6 +219,7 @@ const Container = styled.section`
             margin: 2rem;
             box-shadow: 1rem 1rem 2rem ${({theme}) => theme.tertiaryColor},
                         0 0 0 1rem ${({theme}) => theme.tertiaryColor} inset;
+            transition: .3s;
 
             &::after {
                 content: '';

@@ -146,4 +146,14 @@ const Container = styled.section`
             }
         }
     }
+
+    @media (max-width: 600px) {
+        .content {
+            .title {
+                font-size: ${fonts.fontSizeLarge};
+                padding: 1rem;
+                letter-spacing: .6rem;
+            }
+        }
+    }
 `
