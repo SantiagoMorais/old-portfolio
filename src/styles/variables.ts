@@ -39,4 +39,3 @@ export const fonts: IFonts = {
 }
 
 export const componentsGap = "3rem";
-

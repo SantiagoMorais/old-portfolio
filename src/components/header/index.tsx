@@ -47,14 +47,12 @@ const Container = styled.section`
     justify-content: center;
     align-items: center;
     width: 100%;
-    padding: 1rem 5dvw;
+    padding: 2rem 5dvw;
     
     .content {
         display: flex;
         max-width: 144rem;
         width: 100%;
-        gap: 2rem;
-        padding: 1rem 3rem;
         align-items: center;
         flex-wrap: wrap;
         justify-content: space-between;
@@ -156,16 +154,15 @@ const Container = styled.section`
     
                     .item {
                         font-weight: 500;
-                        border-radius: 1.6rem;
                         transition: .3s;
-                        padding: 0 1rem;
                         width: fit-content;
-                        cursor: pointer;
                         color: ${({ theme }) => theme.textColor};
-
+                        margin: 0.5rem 1rem;
+                        
                         a {
+
                             color: ${({ theme }) => theme.textColor};
-                            padding: 0.5rem 0;
+                            width: 100%;
                         }
                     }
                 }
@@ -173,18 +170,10 @@ const Container = styled.section`
         }
     }
 
-    @media (max-width: 1100px) {
-        .content {
-            width: 95dvw;
-            justify-content: center;
-            gap: 5rem;
-        }
-    }
-
     @media (max-width: 600px) {
+        padding: 2rem 0;
+
         .content {
-            gap: 0rem;
-            padding: 1rem;
             flex-direction: column;
 
             a {

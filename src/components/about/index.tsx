@@ -137,6 +137,7 @@ const Container = styled.section`
                         gap: 1rem;
                         min-width: 20rem;
                         max-width: 40rem;
+                        font-size: ${fonts.fontSizeSmall};
                         
                         .icon {
                             font-size: 5rem;
@@ -151,12 +152,10 @@ const Container = styled.section`
                             height: 100%;
 
                             h4 {
-                                font-size: ${fonts.fontSizeSmall};
                                 font-weight: 800;
                             }
 
                             p {
-                                font-size: ${fonts.fontSizeSmall};
                                 font-weight: 400;
                             }
                         }
