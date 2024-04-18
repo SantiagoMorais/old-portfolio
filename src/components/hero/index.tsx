@@ -1,6 +1,3 @@
-// import { faGithub, faLinkedin, faWhatsapp } from "@fortawesome/free-brands-svg-icons"
-// import { faAt } from "@fortawesome/free-solid-svg-icons"
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import styled from "styled-components"
 import heroImage from "@assets/felipe-image.png"
 import { useContext } from "react"

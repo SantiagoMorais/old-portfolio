@@ -6,6 +6,8 @@ import styled from "styled-components"
 import backgroundImage from "@assets/background-image.jpg"
 import { AboutMe } from "@components/about";
 import { Skills } from "@components/skills";
+import { Projects } from "@components/projects";
+import { ScrollButton } from "@components/scrollButton";
 
 export const Home = () => {
     const { theme } = useContext(ThemeContext);
@@ -17,6 +19,8 @@ export const Home = () => {
             <Hero />
             <AboutMe />
             <Skills />
+            <Projects />
+            <ScrollButton />
         </Container>
     )
 }

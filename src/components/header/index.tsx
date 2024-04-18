@@ -15,6 +15,13 @@ export const Header = () => {
         setActive(!active)
     }
 
+    const links = [
+        {text: "About Me", id: "#aboutMe"},
+        {text: "Skills", id: "#skills"},
+        {text: "My Projects", id: "#myProjects"},
+        {text: "Contacts", id: "#contacts"},
+    ]
+
     return (
         <Container theme={theme}>
             <div className="content">
@@ -30,10 +37,11 @@ export const Header = () => {
                     </div>
                     <nav className="navigation">
                         <ul className={`list ${active ? "active" : ""}`}>
-                            <li className="item"><a href="#aboutMe">About me</a></li>
-                            <li className="item"><a href="#skills">Skills</a></li>
-                            <li className="item"><a href="#myProjects">My projects</a></li>
-                            <li className="item"><a href="#contacts">Contacts</a></li>
+                            {links && links.map((item, index) =>
+                                <li className="item" key={index}>
+                                    <a href={item.id}>{item.text}</a>
+                                </li>
+                            )}
                         </ul>
                     </nav>
                 </div>
