@@ -8,6 +8,7 @@ import { AboutMe } from "@components/about";
 import { Skills } from "@components/skills";
 import { Projects } from "@components/projects";
 import { ScrollButton } from "@components/scrollButton";
+import { Contacts } from "@components/contacts";
 
 export const Home = () => {
     const { theme } = useContext(ThemeContext);
@@ -20,6 +21,7 @@ export const Home = () => {
             <AboutMe />
             <Skills />
             <Projects />
+            <Contacts />
             <ScrollButton />
         </Container>
     )

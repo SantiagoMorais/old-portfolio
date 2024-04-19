@@ -8,10 +8,9 @@ import { useGitHubAutomatedRepos } from "github-automated-repos"
 
 export const Projects = () => {
     const { theme } = useContext(ThemeContext);
-    // const {resposData, setResposData} = useState()
     const data = useGitHubAutomatedRepos("SantiagoMorais", "portfolio")
-
     console.log(data);
+    
     
     const categoryList = [
         "See All",

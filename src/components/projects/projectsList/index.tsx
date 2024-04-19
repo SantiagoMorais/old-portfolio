@@ -1,11 +1,11 @@
-import { useContext, useMemo } from "react";
+import { useContext, useMemo, useState } from "react";
 import styled from "styled-components"
 import { StackIcons } from "github-automated-repos";
 import { fonts } from "@styles/variables";
 import { ThemeContext } from "@contexts/themeContext";
 import imageNotFound from "@assets/image-not-found.jpg"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHandPointer, faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faHandPointer, faPlus, faTimes } from "@fortawesome/free-solid-svg-icons";
 
 interface IProjectsListProps {
     data: {
@@ -19,11 +19,12 @@ interface IProjectsListProps {
     }[];
 }
 
-export const ProjectsList: React.FC<IProjectsListProps> = ({data}) => {
+export const ProjectsList: React.FC<IProjectsListProps> = ({ data }) => {
     const { theme } = useContext(ThemeContext);
+    const [showImage, setShowImage] = useState<number | null>(null);
 
-    const handleShowImage = (image) => {
-        
+    const handleShowImage = (id: number) => {
+        showImage === id ? setShowImage(null) : setShowImage(id);
     }
 
     const bannerUrls = useMemo(() => {
@@ -41,7 +42,7 @@ export const ProjectsList: React.FC<IProjectsListProps> = ({data}) => {
     return (
         <Container theme={theme}>
             {data.length > 0 && data.map((project, index) =>
-                <div className="project" key={project.id}>
+                <div className="project" key={project.id} style={showImage !== project.id && showImage !== null ? { display: "none" } : {}}>
                     <div className="banner">
                         <img src={bannerUrls[index] ? bannerUrls[index] : imageNotFound} alt={project.name} />
                     </div>
@@ -54,15 +55,29 @@ export const ProjectsList: React.FC<IProjectsListProps> = ({data}) => {
                         )}
                     </div>
                     <div className="buttons">
-                        <button className="button"><a href={project.homepage} target="_blank">Web Page</a></button>
-                        <button className="button"><a href={project.html_url} target="_blank">Github repository</a></button>
-                        <button className="seeImage"><FontAwesomeIcon icon={faPlus} className="icon" onClick={() => handleShowImage()}/></button>
+                        <button className="button">
+                            <a href={project.homepage} target="_blank">Web Page</a>
+                        </button>
+                        <button className="button">
+                            <a href={project.html_url} target="_blank">Github repository</a>
+                        </button>
+                        <button className="seeImage" onClick={() => handleShowImage(project.id)}>
+                            <FontAwesomeIcon icon={faPlus} className="icon" />
+                        </button>
                     </div>
                     <div className="message">
                         <p>
                             See more details
                             <FontAwesomeIcon icon={faHandPointer} className="icon" />
                         </p>
+                    </div>
+                    <div className={`projectImage ${showImage !== project.id && "hiddeImage"}`} >
+                        <div className="window">
+                            <button className="closeWindow" onClick={() => handleShowImage(project.id)}>
+                                <FontAwesomeIcon icon={faTimes} className="icon" />
+                            </button>
+                            <img src={bannerUrls[index]} alt={`Project image: ${project.name}`} className="image" />
+                        </div>
                     </div>
                 </div>
             )}
@@ -82,7 +97,7 @@ const Container = styled.div`
         flex-basis: 0;
         border-radius: .8rem;
         background-color: ${({ theme }) => theme.textColor};
-        color: ${({theme}) => theme.secondaryTextColor};
+        color: ${({ theme }) => theme.secondaryTextColor};
         width: max-content;
         overflow: hidden;
         min-width: 35rem;
@@ -106,7 +121,7 @@ const Container = styled.div`
             left: 0;
             height: 100%;
             width: 100%;
-            background: ${({theme}) => theme.secondaryColor};
+            background: ${({ theme }) => theme.secondaryColor};
             opacity: 0;
             transform: scaleY(0);
             transform-origin: bottom;
@@ -121,7 +136,6 @@ const Container = styled.div`
         
         &:not(:hover)::before {
             transform: scaleY(0);
-            transform-origin: top;
         }
 
         .banner {
@@ -130,7 +144,7 @@ const Container = styled.div`
                 height: 40rem;
                 object-fit: cover;
                 object-position: top center;
-                border-bottom: .2rem solid ${({theme}) => theme.secondaryTextColor};
+                border-bottom: .2rem solid ${({ theme }) => theme.secondaryTextColor};
             }
         }
 
@@ -151,7 +165,7 @@ const Container = styled.div`
             justify-content: center;
             gap: 1rem;
             padding: 1rem;
-            background-color: ${({theme}) => theme.textColor};
+            background-color: ${({ theme }) => theme.textColor};
             
             img {
                 width: 4rem;
@@ -162,7 +176,6 @@ const Container = styled.div`
         .buttons {
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
             gap: 2rem;
             padding: 0 1rem;
@@ -171,7 +184,14 @@ const Container = styled.div`
             position: absolute;
             z-index: 2;
             transition: .5s;
+            height: 300%;
             opacity: 0;
+            justify-content: center;
+
+            &:hover {
+                height: 100%;
+                opacity: 1;
+            }
 
             .button {
                 width: 90%;
@@ -183,13 +203,13 @@ const Container = styled.div`
                 border: .2rem solid transparent;
                 
                 &:hover {
-                    box-shadow: 0 0 1rem ${({theme}) => theme.secondaryTextColor};
-                    border-color: ${({theme}) => theme.textColor};
-                    background-color: ${({theme}) => theme.tertiaryColor};
+                    box-shadow: 0 0 1rem ${({ theme }) => theme.secondaryTextColor};
+                    border-color: ${({ theme }) => theme.textColor};
+                    background-color: ${({ theme }) => theme.tertiaryColor};
                 }
                 
                 &:hover > a {
-                    color: ${({theme}) => theme.textColor};
+                    color: ${({ theme }) => theme.textColor};
                 }
                 
                 a {
@@ -205,7 +225,6 @@ const Container = styled.div`
 
             .seeImage {
                 font-size: ${fonts.fontSizeLarge};
-                opacity: .6;
                 padding: 1rem;
                 width: 6rem;
                 height: 6rem;
@@ -213,14 +232,14 @@ const Container = styled.div`
                 transition: .5s;
                 cursor: pointer;
                 border: .2rem solid transparent;
+                color: ${({ theme }) => theme.secondaryTextColor};
+                background-color: ${({ theme }) => theme.textColor};
 
                 &:hover {
-                    opacity: 1;
-                    box-shadow: 0 0 1rem ${({theme}) => theme.secondaryTextColor};
-                    border-color: ${({theme}) => theme.textColor};
-                    background-color: ${({theme}) => theme.tertiaryColor};
-                    color: ${({theme}) => theme.textColor};
-
+                    box-shadow: 0 0 1rem ${({ theme }) => theme.secondaryTextColor};
+                    border-color: ${({ theme }) => theme.textColor};
+                    background-color: ${({ theme }) => theme.tertiaryColor};
+                    color: ${({ theme }) => theme.textColor};
                 }
             }
         }
@@ -247,11 +266,114 @@ const Container = styled.div`
                 justify-content: center;
             }
         }
+
+        .projectImage {
+            z-index: 3;
+            position: fixed;
+            width: 100dvw;
+            min-height: 100dvh;
+            top: 0;
+            left: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+            &.hiddeImage {
+                display: none;
+            }
+
+            &::before {
+                content: '';
+                position: absolute;
+                width: 100dvw;
+                min-height: 100dvh;
+                background-color: ${({ theme }) => theme.tertiaryColor};
+                opacity: .6;
+            }
+
+            .window {
+                width: 90dvw;
+                max-width: 144rem;
+                height: fit-content;
+                max-height: 90dvh;
+                overflow-y: auto;
+                display: flex;
+                justify-content: center;
+                border-radius: 3rem 0 0 3rem;
+                position: relative;
+                border: .2rem solid ${({ theme }) => theme.textColor};
+            }
+
+            .closeWindow {
+                position: fixed;
+                top: 7dvh;
+                left: 7dvw;
+                z-index: 4;
+                cursor: pointer;
+                background: ${({ theme }) => theme.textColor};
+                color: ${({ theme }) => theme.secondaryTextColor};
+                opacity: .6;
+                border-radius: 1rem;
+                border: .2rem solid transparent;
+                transition: .5s;
+                overflow: hidden;
+
+                &:hover {
+                    opacity: 1;
+                }
+
+                &::before {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    height: 100%;
+                    width: 100%;
+                    background: ${({ theme }) => theme.secondaryColor};
+                    opacity: 0;
+                    transform: scaleX(0);
+                    transform-origin: left;
+                    transition: transform .5s, opacity .5s;
+                    z-index: 0;
+                  }
+                  
+                &:hover::before {
+                    transform: scaleX(1);
+                    opacity: 1;
+                }
+                
+                &:not(:hover)::before {
+                    transform: scaleX(0);
+                    transform-origin: right;
+                }
+
+                .icon {
+                    padding: 1rem;
+                    width: 5rem;
+                    height: 5rem;
+                    position: relative;
+                }
+            }
+
+            .image {
+                width: 100%;
+                height: max-content;
+            }
+        }
     }
 
     @media (max-width: 600px) {
         .project {
             min-width: 25rem;
+
+            .projectImage {
+                .closeWindow {
+                    .icon {
+                        width: 2rem;
+                        height: 2rem;
+                    }
+                }
+            }
         }
     }
 `
