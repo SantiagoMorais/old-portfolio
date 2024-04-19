@@ -3,12 +3,18 @@ import styled from "styled-components"
 import { useContext } from "react"
 import { ThemeContext } from "@contexts/themeContext"
 import { ProjectsList } from "./projectsList"
+import { useGitHubAutomatedRepos } from "github-automated-repos"
 
 
 export const Projects = () => {
     const { theme } = useContext(ThemeContext);
+    // const {resposData, setResposData} = useState()
+    const data = useGitHubAutomatedRepos("SantiagoMorais", "portfolio")
 
+    console.log(data);
+    
     const categoryList = [
+        "See All",
         "TypeScript",
         "React",
         "Integrative Tests",
@@ -32,7 +38,7 @@ export const Projects = () => {
                     </li>
                     )}
                 </ul>
-                <ProjectsList />
+                <ProjectsList data={data}/>
             </div>
         </Container>
     )
@@ -90,6 +96,7 @@ const Container = styled.section`
             .category {
                 flex: 1;
                 flex-basis: 0;
+                margin-bottom: 1rem;
                 
                 .button {
                     width: 100%;

@@ -135,8 +135,9 @@ const Container = styled.section`
 
             p {
                 position: relative;
-
+                
                 span {
+                    transition: .3s;
                     font-weight: 500;
                     color: ${({ theme }) => theme.secondaryTextColor};
                 }
