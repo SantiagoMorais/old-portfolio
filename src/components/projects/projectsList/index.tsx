@@ -81,7 +81,8 @@ const Container = styled.div`
         flex: 1;
         flex-basis: 0;
         border-radius: .8rem;
-        background-color: ${({ theme }) => theme.tertiaryColor};
+        background-color: ${({ theme }) => theme.textColor};
+        color: ${({theme}) => theme.secondaryTextColor};
         width: max-content;
         overflow: hidden;
         min-width: 35rem;
@@ -129,6 +130,7 @@ const Container = styled.div`
                 height: 40rem;
                 object-fit: cover;
                 object-position: top center;
+                border-bottom: .2rem solid ${({theme}) => theme.secondaryTextColor};
             }
         }
 
@@ -148,10 +150,12 @@ const Container = styled.div`
             flex-wrap: wrap;
             justify-content: center;
             gap: 1rem;
-            padding: 0 1rem;
-
+            padding: 1rem;
+            background-color: ${({theme}) => theme.textColor};
+            
             img {
-                width: 3rem;
+                width: 4rem;
+                filter: grayscale(0%);
             }
         }
 
