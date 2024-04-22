@@ -79,7 +79,6 @@ const Container = styled.section`
                     ${({theme}) => linkHoverEffect(theme, 'right', 'left')};
                     padding-bottom: .5rem;
 
-
                     &:hover {
                         color: ${({theme}) => theme.secondaryColor}
                     }
@@ -87,6 +86,21 @@ const Container = styled.section`
                     .icon {
                         width: 5rem;
                         height: 5rem;
+                    }
+                }
+            }
+        }
+    }
+
+    @media(max-width: 600px) {
+        .content {
+            .social {
+                .link {
+                    a {
+                        .icon {
+                            width: 4rem;
+                            height: 4rem;
+                        }
                     }
                 }
             }

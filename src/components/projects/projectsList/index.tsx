@@ -33,7 +33,7 @@ export const ProjectsList: React.FC<IProjectsListProps> = ({ data }) => {
     }
 
     const handleBodyOverflow = () => {
-        showImage !== null ? document.body.style.overflow = 'hidden' : document.body.style.overflow = 'scroll'
+        showImage !== null ? document.body.style.overflowY = 'hidden' : document.body.style.overflowY = 'scroll'
     }
 
     handleBodyOverflow();
