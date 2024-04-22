@@ -1,6 +1,5 @@
 import { useContext, useState } from "react";
 import styled from "styled-components"
-import { StackIcons } from "github-automated-repos";
 import { fonts } from "@styles/variables";
 import { ThemeContext } from "@contexts/themeContext";
 import imageNotFound from "@assets/image-not-found.jpg"
@@ -23,24 +22,37 @@ export const ProjectsList: React.FC<IProjectsListProps> = ({ data }) => {
     const { theme } = useContext(ThemeContext);
     const [showImage, setShowImage] = useState<number | null>(null);
 
+    const hiddenIcons: string[] = [
+        "portfolio",
+        "contextapi",
+        "tests"
+    ]
+
     const handleShowImage = (id: number) => {
         showImage === id ? setShowImage(null) : setShowImage(id);
     }
 
+    const handleBodyOverflow = () => {
+        showImage !== null ? document.body.style.overflow = 'hidden' : document.body.style.overflow = 'scroll'
+    }
+
+    handleBodyOverflow();
+
     return (
-        <Container theme={theme}>
+        <Container theme={theme} data-testid="projectsList">
             {data.length > 0 && data.map((project) =>
-                <div className="project" key={project.id} style={showImage !== project.id && showImage !== null ? { display: "none" } : {}}>
+                <div 
+                className={`project ${showImage !== project.id && showImage !== null ? "hiddeProject" : ''}`} 
+                key={project.id}
+                >
                     <div className="banner">
-                        {/* <img src={bannerUrls[index] ? bannerUrls[index] : imageNotFound} alt={project.name} /> */}
                         <img src={project.banner ? project.banner : imageNotFound} alt={project.name} />
                     </div>
                     <h3 className="name">{project.name.replace(/-/g, " ")}</h3>
                     <p className="description">{project.description}</p>
-                    <div className="icons">
-                        {project.topics.map((icon, index) =>
-                            icon !== "portfolio" && icon !== "contextapi" &&
-                            <StackIcons key={index} itemTopics={icon} className={icon} />
+                    <div className="categories">
+                        {project.topics.filter(topic => !hiddenIcons.includes(topic)).map((icon, index) =>
+                            <p key={index} className="category" >{icon}</p>
                         )}
                     </div>
                     <div className="buttons">
@@ -119,12 +131,16 @@ const Container = styled.div`
         }
         
         &:hover::before {
-            transform: scaleX(1);
+            transform: scaleY(1);
             opacity: .6;
         }
         
         &:not(:hover)::before {
             transform: scaleY(0);
+        }
+
+        &.hiddeProject {
+            z-index: 0;
         }
 
         .banner {
@@ -148,17 +164,20 @@ const Container = styled.div`
             font-size: ${fonts.fontSizeSmall};
         }
 
-        .icons {
+        .categories {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             gap: 1rem;
             padding: 1rem;
-            background-color: ${({ theme }) => theme.textColor};
             
-            img {
-                width: 4rem;
-                filter: grayscale(0%);
+            .category {
+                background-color: ${({theme}) => theme.tertiaryColor};
+                padding: .5rem 1rem;
+                border-radius: 5rem;
+                color: ${({theme}) => theme.textColor};
+                font-weight: 500;
+                text-transform: capitalize;
             }
         }
 
@@ -291,63 +310,65 @@ const Container = styled.div`
                 border-radius: 3rem 0 0 3rem;
                 position: relative;
                 border: .2rem solid ${({ theme }) => theme.textColor};
-            }
-
-            .closeWindow {
-                position: fixed;
-                top: 7dvh;
-                left: 7dvw;
-                z-index: 4;
-                cursor: pointer;
-                background: ${({ theme }) => theme.textColor};
-                color: ${({ theme }) => theme.secondaryTextColor};
-                opacity: .6;
-                border-radius: 1rem;
-                border: .2rem solid transparent;
-                transition: .5s;
-                overflow: hidden;
-
-                &:hover {
-                    opacity: 1;
-                }
-
-                &::before {
-                    content: "";
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    height: 100%;
-                    width: 100%;
-                    background: ${({ theme }) => theme.secondaryColor};
-                    opacity: 0;
-                    transform: scaleX(0);
-                    transform-origin: left;
-                    transition: transform .5s, opacity .5s;
-                    z-index: 0;
-                  }
-                  
-                &:hover::before {
-                    transform: scaleX(1);
-                    opacity: 1;
-                }
                 
-                &:not(:hover)::before {
-                    transform: scaleX(0);
-                    transform-origin: right;
+                .closeWindow {
+                    z-index: 2;
+                    cursor: pointer;
+                    background: ${({ theme }) => theme.textColor};
+                    color: ${({ theme }) => theme.secondaryTextColor};
+                    opacity: .6;
+                    border-radius: 1rem;
+                    border: .2rem solid transparent;
+                    transition: .5s;
+                    overflow: hidden;
+                    position: fixed;
+                    top: 1rem;
+                    right: 1rem;
+    
+                    &:hover {
+                        opacity: 1;
+                    }
+    
+                    &::before {
+                        content: "";
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        height: 100%;
+                        width: 100%;
+                        background: ${({ theme }) => theme.secondaryColor};
+                        opacity: 0;
+                        transform: scaleX(0);
+                        transform-origin: left;
+                        transition: transform .5s, opacity .5s;
+                        z-index: 0;
+                      }
+                      
+                    &:hover::before {
+                        transform: scaleX(1);
+                        opacity: 1;
+                    }
+                    
+                    &:not(:hover)::before {
+                        transform: scaleX(0);
+                        transform-origin: right;
+                    }
+    
+                    .icon {
+                        padding: 1rem;
+                        width: 4rem;
+                        height: 4rem;
+                        position: relative;
+                    } 
                 }
 
-                .icon {
-                    padding: 1rem;
-                    width: 5rem;
-                    height: 5rem;
-                    position: relative;
+                .image {
+                    width: 100%;
+                    height: max-content;
                 }
             }
 
-            .image {
-                width: 100%;
-                height: max-content;
-            }
+
         }
     }
 

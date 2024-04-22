@@ -37,11 +37,11 @@ const Container = styled.main`
   flex-direction: column;
 
   .backgroundImage {
-    width: 100vw;
-    height: 100dvh;
     background: url(${backgroundImage}) no-repeat center center;
+    width: 100%;
+    height: 100%;
     background-size: cover;
-    position: absolute;
+    position: fixed;
     opacity: .4;
     z-index: 0;
   }

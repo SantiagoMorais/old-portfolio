@@ -2,55 +2,50 @@ import { ThemeContext } from "@contexts/themeContext"
 import { faLinkedin, faSquareGithub, faSquareWhatsapp } from "@fortawesome/free-brands-svg-icons"
 import { faAt } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { fonts } from "@styles/variables"
+import { fonts, linkHoverEffect } from "@styles/variables"
 import { useContext } from "react"
 import styled from "styled-components"
 
 export const Contacts = () => {
     const { theme } = useContext(ThemeContext);
 
+    const contacts = [
+        { href: "https://www.linkedin.com/in/felipe-santiago-morais/", icon: faLinkedin },
+        { href: "https://github.com/SantiagoMorais", icon: faSquareGithub },
+        { href: "mailto:contatofelipesantiago@gmail.com", icon: faAt },
+        { href: "https://api.whatsapp.com/send?phone=5531996951033&text=Hi%2C%20Felipe%21%20I%20got%20your%20contact%20from%20your%20portfolio.", icon: faSquareWhatsapp }
+    ]
+
     return (
         <Container id="contacts" theme={theme}>
             <div className="content">
                 <h2 className="title">Contact me on my social media</h2>
                 <ul className="social">
-                    <li className="link">
-                        <a target="_blank" href="https://www.linkedin.com/in/felipe-santiago-morais/">
-                            <FontAwesomeIcon icon={faLinkedin} />
+                    {contacts.map((link, index) =>
+                        <li className="link" key={index}>
+                            <a href={link.href} target="_blank">
+                                <FontAwesomeIcon icon={link.icon} className="icon"/>
                             </a>
-                    </li>
-                    <li className="link">
-                        <a target="_blank" href="https://www.linkedin.com/in/felipe-santiago-morais/">
-                        <FontAwesomeIcon icon={faSquareGithub} />
-                        </a>
-                    </li>
-                    <li className="link">
-                        <a target="_blank" href="mailto:contatofelipesantiago@gmail.com">
-                        <FontAwesomeIcon icon={faAt} />
-                        </a>
-                    </li>
-                    <li className="link">
-                        <a target="_blank" href="https://api.whatsapp.com/send?phone=5531996951033&text=Hi%2C%20Felipe%21%20I%20got%20your%20contact%20from%20your%20portfolio.">
-                        <FontAwesomeIcon icon={faSquareWhatsapp} />
-                        </a>
-                    </li>
+                        </li>
+                    )}
                 </ul>
             </div>
         </Container>
     )
 }
 
-const Container = styled.footer`
+const Container = styled.section`
     width: 100%;
     display: flex;
     justify-content: center;
+    z-index: 0;
     position: relative;
 
     &::after {
         content: '';
-        position: absolute;
-        height: 100%;
         width: 100%;
+        height: 100%;
+        position: absolute;
         background-color: ${({theme}) => theme.secondaryTextColor};
         opacity: .6;
     }
@@ -63,11 +58,38 @@ const Container = styled.footer`
         display: flex;
         align-items: center;
         flex-direction: column;
-        padding: 1rem;
+        padding: 2rem;
+        gap: 2rem;
 
         .title {
-            color: ${({theme}) => theme.textColor};
+            color: ${({ theme }) => theme.textColor};
             font-size: ${fonts.fontSizeMedium};
+            text-align: center;
+        }
+
+        .social {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+
+            .link {
+                a {
+                    color: ${({theme}) => theme.textColor};
+                    ${({theme}) => linkHoverEffect(theme, 'right', 'left')};
+                    padding-bottom: .5rem;
+
+
+                    &:hover {
+                        color: ${({theme}) => theme.secondaryColor}
+                    }
+                    
+                    .icon {
+                        width: 5rem;
+                        height: 5rem;
+                    }
+                }
+            }
         }
     }
 `

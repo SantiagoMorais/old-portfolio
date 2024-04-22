@@ -16,7 +16,7 @@ export const ScrollButton = () => {
     }
 
     return (
-        <Button theme={theme} onClick={() => handleScroll()}>
+        <Button theme={theme} onClick={() => handleScroll()} data-testid="scrollButton">
             <FontAwesomeIcon icon={faArrowUp} className="icon" />
         </Button>
     )

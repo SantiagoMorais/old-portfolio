@@ -1,7 +1,7 @@
 import { ThemeContext } from "@contexts/themeContext";
 import { faFlask, faLaptopCode, faTools } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { componentsGap, fonts } from "@styles/variables";
+import { componentsGap, fonts, secondLinkHoverEffect } from "@styles/variables";
 import { useContext } from "react";
 import styled from "styled-components"
 
@@ -101,43 +101,28 @@ const Container = styled.section`
             color: ${({ theme }) => theme.secondaryTextColor};
             font-size: ${fonts.fontSizeMedium};
             cursor: pointer;
-            border: .1rem solid transparent;
+            border: .2rem solid transparent;
             padding: 1rem;
             border-radius: 0 1.6rem 0 1.6rem;
             background-color: ${({theme}) => theme.secondaryColor};
-            transition: .3s;
-            position: relative;
             overflow: hidden;
             z-index: 1;
+            ${secondLinkHoverEffect("rgba(0,0,0,.3)", "1")}
 
-            &::before {
-                content: "";
-                position: absolute;
-                top: 0;
-                left: 0;
-                height: 100%;
-                width: 100%;
-                background: rgba(0,0,0,.3);
-                transform: scaleX(0);
-                transform-origin: left;
-                transition: transform .5s;
-                z-index: 0;
-              }
-              
-            &:hover::before {
-                transform: scaleX(1);
+            &:hover {
+                border-color: ${({theme}) => theme.textColor};
+                color: ${({ theme }) => theme.textColor};
             }
-
-            &:not(:hover)::before {
-                transform: scaleX(0);
-                transform-origin: right;
+            
+            &:hover > p span {
+                color: ${({ theme }) => theme.textColor};
             }
 
             p {
                 position: relative;
                 
                 span {
-                    transition: .3s;
+                    transition: .5s;
                     font-weight: 500;
                     color: ${({ theme }) => theme.secondaryTextColor};
                 }

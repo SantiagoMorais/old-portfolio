@@ -1,17 +1,17 @@
-import { componentsGap, fonts } from "@styles/variables"
+import { componentsGap, fonts, secondLinkHoverEffect } from "@styles/variables"
 import styled from "styled-components"
 import { useContext, useState } from "react"
 import { ThemeContext } from "@contexts/themeContext"
 import { ProjectsList } from "./projectsList"
 import { useGitHubAutomatedRepos } from "github-automated-repos"
 
-type TCategory = "portfolio" | "typescript" | "react" | "jest" | "Contextapi" | "javascript" | "contextapi";
+type TCategory = "portfolio" | "typescript" | "react" | "tests" | "context-api" | "javascript" | "react-testing-library" | "html5" | "css3";
 
 export const Projects = () => {
     const { theme } = useContext(ThemeContext);
     const [category, setCategory] = useState<TCategory>("portfolio")
     const data = useGitHubAutomatedRepos("SantiagoMorais", category)
-
+    
     const handleCategory = (category: TCategory) => {
         setCategory(category);
     }
@@ -21,8 +21,8 @@ export const Projects = () => {
         {name: "React", topic: "react"},
         {name: "TypeScript", topic: "typescript"},
         {name: "JavaScript", topic: "javascript"},
-        {name: "Integrative Tests", topic: "jest"},
-        {name: "Context API", topic: "contextapi"},
+        {name: "Integrative Tests", topic: "tests"},
+        {name: "Context API", topic: "context-api"},
     ]
     
     return (
@@ -34,10 +34,13 @@ export const Projects = () => {
                     See more projects below:
                 </p>
                 <ul className="categoryList">
-                    {categoryList.map((category, index) => 
+                    {categoryList.map((categoryItem, index) => 
                     <li className="category" key={index}>
-                        <button className="button" onClick={() => handleCategory(category.topic)}>
-                            <p className="buttonLabel">{category.name}</p>
+                        <button 
+                        className={`button ${category === categoryItem.topic && "selected"}`}
+                        data-testid={categoryItem.topic}
+                        onClick={() => handleCategory(categoryItem.topic)}>
+                            <p className="buttonLabel">{categoryItem.name}</p>
                         </button>
                     </li>
                     )}
@@ -101,6 +104,7 @@ const Container = styled.section`
                 flex: 1;
                 flex-basis: 0;
                 margin-bottom: 1rem;
+
                 
                 .button {
                     width: 100%;
@@ -109,45 +113,31 @@ const Container = styled.section`
                     border: .1rem solid transparent;
                     border-radius: .8rem;
                     padding: .9rem;
-                    position: relative;
                     overflow: hidden;
-                    transition: .5s;
                     cursor: pointer;
+                    transition: .3s;
+
+                    &.selected {
+                        background: ${({theme}) => theme.secondaryColor};
+                        color: ${({theme}) => theme.secondaryTextColor};
+
+                        .buttonLabel {
+                            color: ${({theme}) => theme.secondaryTextColor};
+                        }
+                    }
                     
                     &:hover {
                         border-color: ${({theme}) => theme.textColor};
                     }
         
-                    &::before {
-                        content: "";
-                        position: absolute;
-                        top: 0;
-                        left: 0;
-                        height: 100%;
-                        width: 100%;
-                        background: ${({theme}) => theme.secondaryColor};
-                        opacity: 0;
-                        transform: scaleX(0);
-                        transform-origin: left;
-                        transition: transform .5s, opacity .5s;
-                        z-index: 0;
-                      }
-                      
-                    &:hover::before {
-                        transform: scaleX(1);
-                        opacity: .6;
-                    }
-        
-                    &:not(:hover)::before {
-                        transform: scaleX(0);
-                        transform-origin: right;
-                    }
+                    ${({theme}) => secondLinkHoverEffect(theme.secondaryColor, ".6")}
 
                     .buttonLabel {
                         position: relative;
                         font-weight: 500;
                         color: ${({theme}) => theme.textColor};
                         font-size: ${fonts.fontSizeSmall};
+                        transition: .3s;
                     }
                 }
             }

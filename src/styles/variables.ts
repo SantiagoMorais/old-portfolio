@@ -1,3 +1,5 @@
+import { DefaultTheme } from "styled-components"
+
 export interface IColors {
     primaryColor: string,
     secondaryColor: string,
@@ -39,3 +41,60 @@ export const fonts: IFonts = {
 }
 
 export const componentsGap = "3rem";
+
+export const linkHoverEffect = (theme: DefaultTheme, transformOrigin: string, transformDestiny: string,) => `
+    transition: .3s;
+    position: relative;
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: .2rem;
+        background: ${theme.secondaryColor};
+        transform: scaleX(0);
+        transform-origin: ${transformOrigin};
+        transition: transform .5s;
+    }
+
+    &:hover::after {
+        transform: scaleX(1);
+    }
+
+    &:not(:hover)::after {
+        transform: scaleX(0);
+        transform-origin: ${transformDestiny};
+    }
+`;
+
+export const secondLinkHoverEffect = (backgroundColor: string, opacity: string) => `
+    transition: .5s;
+    position: relative;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background: ${backgroundColor};
+        opacity: 0;
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform .5s, opacity .5s;
+        z-index: 0;
+    }
+    
+    &:hover::before {
+        transform: scaleX(1);
+        opacity: ${opacity};
+    }
+
+    &:not(:hover)::before {
+        transform: scaleX(0);
+        transform-origin: right;
+    }
+`

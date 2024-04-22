@@ -2,7 +2,7 @@ import styled from "styled-components"
 import heroImage from "@assets/felipe-image.png"
 import { useContext } from "react"
 import { ThemeContext } from "@contexts/themeContext"
-import { componentsGap, fonts } from "@styles/variables"
+import { componentsGap, fonts, linkHoverEffect } from "@styles/variables"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCss3Alt, faHtml5, faJsSquare, faReact } from "@fortawesome/free-brands-svg-icons"
 
@@ -143,31 +143,10 @@ const Container = styled.section`
                 .language {
                     display: flex;
                     border-radius: .8rem;
-                    transition: .3s;
-                    position: relative;
                     color: ${({ theme }) => theme.textColor};
-            
-                    &::after {
-                        content: '';
-                        position: absolute;
-                        top: 110%;
-                        left: 0;
-                        width: 100%;
-                        height: .2rem;
-                        background: ${({ theme }) => theme.secondaryColor};
-                        transform: scaleX(0);
-                        transform-origin: left;
-                        transition: transform .5s;
-                    }
-                
-                    &:hover::after {
-                        transform: scaleX(1);
-                    }
-                
-                    &:not(:hover)::after {
-                        transform: scaleX(0);
-                        transform-origin: right;
-                    }
+                    padding-bottom: .5rem;
+                    ${({theme}) => linkHoverEffect(theme, 'left', 'right')};
+
 
                     &:hover {
                         color: ${({ theme }) => theme.secondaryColor};

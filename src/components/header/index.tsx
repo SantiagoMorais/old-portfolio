@@ -2,7 +2,7 @@ import { ThemeTogglerButton } from "@components/themeTogglerButton";
 import { ThemeContext } from "@contexts/themeContext";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { fonts } from "@styles/variables";
+import { fonts, linkHoverEffect } from "@styles/variables";
 import { useContext, useState } from "react";
 import styled from "styled-components";
 
@@ -67,30 +67,7 @@ const Container = styled.section`
 
         a {
             text-align: center;
-            transition: .3s;
-            position: relative;
-    
-            &::after {
-                content: '';
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                width: 100%;
-                height: .2rem;
-                background: ${({theme}) => theme.secondaryColor};
-                transform: scaleX(0);
-                transform-origin: left;
-                transition: transform .5s;
-            }
-        
-            &:hover::after {
-                transform: scaleX(1);
-            }
-        
-            &:not(:hover)::after {
-                transform: scaleX(0);
-                transform-origin: right;
-            }
+            ${({theme}) => linkHoverEffect(theme, 'left', 'right')};
 
             .logo {
                 color: ${({ theme }) => theme.textColor};
