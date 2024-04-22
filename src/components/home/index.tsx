@@ -38,7 +38,7 @@ const Container = styled.main`
 
   .backgroundImage {
     width: 100vw;
-    height: 100%;
+    height: 100dvh;
     background: url(${backgroundImage}) no-repeat center center;
     background-size: cover;
     position: absolute;
