@@ -1,4 +1,4 @@
-import { useContext, useMemo, useState } from "react";
+import { useContext, useState } from "react";
 import styled from "styled-components"
 import { StackIcons } from "github-automated-repos";
 import { fonts } from "@styles/variables";
@@ -27,24 +27,13 @@ export const ProjectsList: React.FC<IProjectsListProps> = ({ data }) => {
         showImage === id ? setShowImage(null) : setShowImage(id);
     }
 
-    const bannerUrls = useMemo(() => {
-        if (data?.length > 0) {
-            return data.map(project => {
-                const updatedBanner = project.banner.includes("DIGOARTHUR")
-                    ? project.banner.replace("DIGOARTHUR", "SantiagoMorais")
-                    : project.banner;
-                return updatedBanner;
-            });
-        }
-        return [];
-    }, [data]);
-
     return (
         <Container theme={theme}>
-            {data.length > 0 && data.map((project, index) =>
+            {data.length > 0 && data.map((project) =>
                 <div className="project" key={project.id} style={showImage !== project.id && showImage !== null ? { display: "none" } : {}}>
                     <div className="banner">
-                        <img src={bannerUrls[index] ? bannerUrls[index] : imageNotFound} alt={project.name} />
+                        {/* <img src={bannerUrls[index] ? bannerUrls[index] : imageNotFound} alt={project.name} /> */}
+                        <img src={project.banner ? project.banner : imageNotFound} alt={project.name} />
                     </div>
                     <h3 className="name">{project.name.replace(/-/g, " ")}</h3>
                     <p className="description">{project.description}</p>
@@ -76,7 +65,7 @@ export const ProjectsList: React.FC<IProjectsListProps> = ({ data }) => {
                             <button className="closeWindow" onClick={() => handleShowImage(project.id)}>
                                 <FontAwesomeIcon icon={faTimes} className="icon" />
                             </button>
-                            <img src={bannerUrls[index]} alt={`Project image: ${project.name}`} className="image" />
+                            <img src={project.banner} alt={`Project image: ${project.name}`} className="image" />
                         </div>
                     </div>
                 </div>

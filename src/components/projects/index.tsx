@@ -1,23 +1,28 @@
 import { componentsGap, fonts } from "@styles/variables"
 import styled from "styled-components"
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import { ThemeContext } from "@contexts/themeContext"
 import { ProjectsList } from "./projectsList"
 import { useGitHubAutomatedRepos } from "github-automated-repos"
 
+type TCategory = "portfolio" | "typescript" | "react" | "jest" | "Contextapi" | "javascript" | "contextapi";
 
 export const Projects = () => {
     const { theme } = useContext(ThemeContext);
-    const data = useGitHubAutomatedRepos("SantiagoMorais", "portfolio")
-    console.log(data);
-    
-    
-    const categoryList = [
-        "See All",
-        "TypeScript",
-        "React",
-        "Integrative Tests",
-        "Context API"
+    const [category, setCategory] = useState<TCategory>("portfolio")
+    const data = useGitHubAutomatedRepos("SantiagoMorais", category)
+
+    const handleCategory = (category: TCategory) => {
+        setCategory(category);
+    }
+
+    const categoryList: {name: string, topic: TCategory}[] = [
+        {name: "See All", topic: "portfolio"},
+        {name: "React", topic: "react"},
+        {name: "TypeScript", topic: "typescript"},
+        {name: "JavaScript", topic: "javascript"},
+        {name: "Integrative Tests", topic: "jest"},
+        {name: "Context API", topic: "contextapi"},
     ]
     
     return (
@@ -31,8 +36,8 @@ export const Projects = () => {
                 <ul className="categoryList">
                     {categoryList.map((category, index) => 
                     <li className="category" key={index}>
-                        <button className="button">
-                            <p className="buttonLabel">{category}</p>
+                        <button className="button" onClick={() => handleCategory(category.topic)}>
+                            <p className="buttonLabel">{category.name}</p>
                         </button>
                     </li>
                     )}
