@@ -135,7 +135,7 @@ const Container = styled.section`
 
                     .item {
                         padding-bottom: .5rem;
-                        border-bottom: .1rem solid ${({theme}) => theme.secondaryColor};
+                        border-bottom: .1rem solid ${({ theme }) => theme.secondaryColor};
                         width: 20rem;
 
                         &:last-child {

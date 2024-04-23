@@ -17,14 +17,14 @@ export const Contacts = () => {
     ]
 
     return (
-        <Container id="contacts" theme={theme}>
+        <Container id="contacts" theme={theme} data-testid="contacts">
             <div className="content">
                 <h2 className="title">Contact me on my social media</h2>
                 <ul className="social">
                     {contacts.map((link, index) =>
                         <li className="link" key={index}>
                             <a href={link.href} target="_blank">
-                                <FontAwesomeIcon icon={link.icon} className="icon"/>
+                                <FontAwesomeIcon icon={link.icon} className="icon" />
                             </a>
                         </li>
                     )}
@@ -46,8 +46,9 @@ const Container = styled.section`
         width: 100%;
         height: 100%;
         position: absolute;
-        background-color: ${({theme}) => theme.secondaryTextColor};
+        background-color: ${({ theme }) => theme.secondaryTextColor};
         opacity: .6;
+        transition: .3s;
     }
 
     .content {
@@ -60,11 +61,13 @@ const Container = styled.section`
         flex-direction: column;
         padding: 2rem;
         gap: 2rem;
+        transition: .3s;
 
         .title {
             color: ${({ theme }) => theme.textColor};
             font-size: ${fonts.fontSizeMedium};
             text-align: center;
+            transition: .3s;
         }
 
         .social {
@@ -75,12 +78,12 @@ const Container = styled.section`
 
             .link {
                 a {
-                    color: ${({theme}) => theme.textColor};
-                    ${({theme}) => linkHoverEffect(theme, 'right', 'left')};
+                    color: ${({ theme }) => theme.textColor};
+                    ${({ theme }) => linkHoverEffect(theme, 'right', 'left')};
                     padding-bottom: .5rem;
 
                     &:hover {
-                        color: ${({theme}) => theme.secondaryColor}
+                        color: ${({ theme }) => theme.secondaryColor}
                     }
                     
                     .icon {
@@ -107,3 +110,4 @@ const Container = styled.section`
         }
     }
 `
+    

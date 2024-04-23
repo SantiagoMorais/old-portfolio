@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import heroImage from "@assets/felipe-image.png"
+import heroImage from "@assets/imgs/felipe-image.png"
 import { useContext } from "react"
 import { ThemeContext } from "@contexts/themeContext"
 import { componentsGap, fonts, linkHoverEffect } from "@styles/variables"
@@ -26,7 +26,7 @@ export const Hero = () => {
                         <h2>Frontend Engineer</h2>
                         <p className="introduction">
                             Passionate about crafting user-friendly interfaces with React.js and TypeScript.
-                            See my <a href="#my-projects">projects</a> here and <a href="#contacts">contact</a> me on my social media!
+                            See my <a href="#myProjects">projects</a> here and <a href="#contacts">contact</a> me on my social media!
                         </p>
                     </div>
                     <ul className="languages">
@@ -145,7 +145,7 @@ const Container = styled.section`
                     border-radius: .8rem;
                     color: ${({ theme }) => theme.textColor};
                     padding-bottom: .5rem;
-                    ${({theme}) => linkHoverEffect(theme, 'left', 'right')};
+                    ${({ theme }) => linkHoverEffect(theme, 'left', 'right')};
 
 
                     &:hover {
@@ -193,8 +193,8 @@ const Container = styled.section`
             border-radius: 50%;
             max-height: 50rem;
             margin: 2rem;
-            box-shadow: 1rem 1rem 2rem ${({theme}) => theme.tertiaryColor},
-                        0 0 0 1rem ${({theme}) => theme.tertiaryColor} inset;
+            box-shadow: 1rem 1rem 2rem ${({ theme }) => theme.tertiaryColor},
+                        0 0 0 1rem ${({ theme }) => theme.tertiaryColor} inset;
             transition: .3s;
 
             &::after {

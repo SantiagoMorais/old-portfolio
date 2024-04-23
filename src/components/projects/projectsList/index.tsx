@@ -1,8 +1,8 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import styled from "styled-components"
 import { fonts } from "@styles/variables";
 import { ThemeContext } from "@contexts/themeContext";
-import imageNotFound from "@assets/image-not-found.jpg"
+import imageNotFound from "@assets/imgs/image-not-found.jpg"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHandPointer, faPlus, faTimes } from "@fortawesome/free-solid-svg-icons";
 
@@ -32,18 +32,21 @@ export const ProjectsList: React.FC<IProjectsListProps> = ({ data }) => {
         showImage === id ? setShowImage(null) : setShowImage(id);
     }
 
-    const handleBodyOverflow = () => {
-        showImage !== null ? document.body.style.overflowY = 'hidden' : document.body.style.overflowY = 'scroll'
-    }
-
-    handleBodyOverflow();
+    useEffect(() => {
+        const handleBodyOverflow = () => {
+            showImage !== null 
+            ? document.body.style.overflowY = 'hidden' 
+            : document.body.style.overflowY = 'scroll'
+        }
+        handleBodyOverflow();
+    }, [showImage])
 
     return (
         <Container theme={theme} data-testid="projectsList">
             {data.length > 0 && data.map((project) =>
-                <div 
-                className={`project ${showImage !== project.id && showImage !== null ? "hiddeProject" : ''}`} 
-                key={project.id}
+                <div
+                    className={`project ${showImage !== project.id && showImage !== null ? "hiddeProject" : ''}`}
+                    key={project.id}
                 >
                     <div className="banner">
                         <img src={project.banner ? project.banner : imageNotFound} alt={project.name} />
@@ -110,6 +113,7 @@ const Container = styled.div`
         padding-bottom: 1rem;
         border: .2rem solid transparent;
         position: relative;
+        transition: .3s;
 
         &:hover > .buttons {
             opacity: 1;
@@ -149,7 +153,6 @@ const Container = styled.div`
                 height: 40rem;
                 object-fit: cover;
                 object-position: top center;
-                border-bottom: .2rem solid ${({ theme }) => theme.secondaryTextColor};
             }
         }
 
@@ -172,12 +175,13 @@ const Container = styled.div`
             padding: 1rem;
             
             .category {
-                background-color: ${({theme}) => theme.tertiaryColor};
+                background-color: ${({ theme }) => theme.tertiaryColor};
                 padding: .5rem 1rem;
                 border-radius: 5rem;
-                color: ${({theme}) => theme.textColor};
+                color: ${({ theme }) => theme.textColor};
                 font-weight: 500;
                 text-transform: capitalize;
+                transition: .3s;
             }
         }
 
@@ -260,6 +264,7 @@ const Container = styled.div`
             padding: 0 1rem;
             
             p {
+                transition: .3s;
                 font-size: ${fonts.fontSizeMedium};
                 background-color: ${({ theme }) => theme.secondaryTextColor};
                 border: .2rem solid transparent;
@@ -367,8 +372,6 @@ const Container = styled.div`
                     height: max-content;
                 }
             }
-
-
         }
     }
 

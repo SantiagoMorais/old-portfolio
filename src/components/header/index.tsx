@@ -16,10 +16,10 @@ export const Header = () => {
     }
 
     const links = [
-        {text: "About Me", id: "#aboutMe"},
-        {text: "Skills", id: "#skills"},
-        {text: "My Projects", id: "#myProjects"},
-        {text: "Contacts", id: "#contacts"},
+        { text: "About Me", id: "#aboutMe" },
+        { text: "Skills", id: "#skills" },
+        { text: "My Projects", id: "#myProjects" },
+        { text: "Contacts", id: "#contacts" },
     ]
 
     return (
@@ -67,7 +67,7 @@ const Container = styled.section`
 
         a {
             text-align: center;
-            ${({theme}) => linkHoverEffect(theme, 'left', 'right')};
+            ${({ theme }) => linkHoverEffect(theme, 'left', 'right')};
 
             .logo {
                 color: ${({ theme }) => theme.textColor};
@@ -76,11 +76,11 @@ const Container = styled.section`
                 transition: .3s;
 
                 &:hover {
-                    color: ${({theme}) => theme.secondaryColor};
+                    color: ${({ theme }) => theme.secondaryColor};
                 }
 
                 &:hover > span {
-                    color: ${({theme}) => theme.textColor};
+                    color: ${({ theme }) => theme.textColor};
                 }
 
                 &::first-letter {
@@ -91,7 +91,7 @@ const Container = styled.section`
 
                 span {
                     font-size: 150%;
-                    color: ${({theme}) => theme.secondaryColor};
+                    color: ${({ theme }) => theme.secondaryColor};
                     transition: .3s;
                 }
             }
@@ -197,7 +197,7 @@ const Container = styled.section`
                         &.active {
                             height: 17rem;
                             padding-top: 1rem;
-                            border-color: ${({theme}) => theme.secondaryColor};
+                            border-color: ${({ theme }) => theme.secondaryColor};
                         }
             
                         &:last-child {

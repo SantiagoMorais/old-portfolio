@@ -4,13 +4,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { componentsGap, fonts, secondLinkHoverEffect } from "@styles/variables";
 import { useContext } from "react";
 import styled from "styled-components"
+import curriculum from "@assets/docs/Curriculum-Vitae-Felipe-Santiago-Morais.pdf"
 
 export const AboutMe = () => {
     const { theme } = useContext(ThemeContext);
-    
-    const handleCurriculum = () => {
-
-    }
 
     return (
         <Container theme={theme} id="aboutMe">
@@ -52,7 +49,13 @@ export const AboutMe = () => {
                         </ul>
                     </div>
 
-                    <button className="curriculum" onClick={() => handleCurriculum}><p>See my <span>Curriculum Vitae</span></p></button>
+                    <button className="curriculum">
+                        <a
+                            href={curriculum}
+                            download="Curriculum Vitae - Felipe Santiago Morais">
+                            Download my Curriculum Vitae
+                        </a>
+                    </button>
                 </div>
             </div>
         </Container>
@@ -104,13 +107,13 @@ const Container = styled.section`
             border: .2rem solid transparent;
             padding: 1rem;
             border-radius: 0 1.6rem 0 1.6rem;
-            background-color: ${({theme}) => theme.secondaryColor};
+            background-color: ${({ theme }) => theme.secondaryColor};
             overflow: hidden;
             z-index: 1;
             ${secondLinkHoverEffect("rgba(0,0,0,.3)", "1")}
 
             &:hover {
-                border-color: ${({theme}) => theme.textColor};
+                border-color: ${({ theme }) => theme.textColor};
                 color: ${({ theme }) => theme.textColor};
             }
             
@@ -118,11 +121,13 @@ const Container = styled.section`
                 color: ${({ theme }) => theme.textColor};
             }
 
-            p {
+            a {
                 position: relative;
+                color: ${({theme}) => theme.secondaryTextColor};
+                transition: .3s;
                 
                 span {
-                    transition: .5s;
+                    transition: .3s;
                     font-weight: 500;
                     color: ${({ theme }) => theme.secondaryTextColor};
                 }
