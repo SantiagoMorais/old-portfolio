@@ -1,5 +1,12 @@
 import { DefaultTheme } from "styled-components"
 
+//constacts data
+export const phoneNumber: number = 5531996951033;
+export const whatsappMessage: string = "Hi, Felipe! I got your contact from your portfolio.".split(" ").join("%20")
+export const email: string = "contatofelipesantiago@gmail.com"
+export const githubUsername: string = "SantiagoMorais"
+export const linkedinUsername: string = "felipe santiago morais".split(" ").join("-")
+
 export interface IColors {
     primaryColor: string,
     secondaryColor: string,

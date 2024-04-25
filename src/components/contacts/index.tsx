@@ -2,7 +2,7 @@ import { ThemeContext } from "@contexts/themeContext"
 import { faLinkedin, faSquareGithub, faSquareWhatsapp } from "@fortawesome/free-brands-svg-icons"
 import { faAt } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { fonts, linkHoverEffect } from "@styles/variables"
+import { email, fonts, githubUsername, linkHoverEffect, linkedinUsername, phoneNumber, whatsappMessage } from "@styles/variables"
 import { useContext } from "react"
 import styled from "styled-components"
 
@@ -10,10 +10,10 @@ export const Contacts = () => {
     const { theme } = useContext(ThemeContext);
 
     const contacts = [
-        { href: "https://www.linkedin.com/in/felipe-santiago-morais/", icon: faLinkedin },
-        { href: "https://github.com/SantiagoMorais", icon: faSquareGithub },
-        { href: "mailto:contatofelipesantiago@gmail.com", icon: faAt },
-        { href: "https://api.whatsapp.com/send?phone=5531996951033&text=Hi%2C%20Felipe%21%20I%20got%20your%20contact%20from%20your%20portfolio.", icon: faSquareWhatsapp }
+        { href: `https://www.linkedin.com/in/${linkedinUsername}/`, icon: faLinkedin },
+        { href: `https://github.com/${githubUsername}`, icon: faSquareGithub },
+        { href: `mailto:${email}`, icon: faAt },
+        { href: `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${whatsappMessage}`, icon: faSquareWhatsapp }
     ]
 
     return (
@@ -110,4 +110,3 @@ const Container = styled.section`
         }
     }
 `
-    
