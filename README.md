@@ -285,6 +285,8 @@ After completing the [DevQuest](https://www.linkedin.com/school/devquest-dev-em-
 
 - [TypeScript](https://www.typescriptlang.org): TypeScript enhances JavaScript development with static typing, improved tooling, and better code readability, leading to more robust and maintainable applications.
 
+- [useGithubAutomatedRepos](https://github.com/DIGOARTHUR/github-automated-repos/): A hook used in a library focused to administrate your repositories remotely from your github, beeing not necessary change your repository directly do add or remove new informations or repositories.
+
 ## Author
 
 - GitHub - [Felipe Santiago Morais](https://github.com/SantiagoMorais)
