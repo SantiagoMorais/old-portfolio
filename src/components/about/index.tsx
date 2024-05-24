@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { componentsGap, fonts, secondLinkHoverEffect } from "@styles/variables";
 import { useContext } from "react";
 import styled from "styled-components"
-import curriculum from "@assets/docs/Curriculum-Vitae-Felipe-Santiago-Morais.pdf"
+import curriculum from "@assets/docs/Felipe Santiago Morais - Curriculum Vitae Frontend Engineer.pdf"
 
 export const AboutMe = () => {
     const { theme } = useContext(ThemeContext);
@@ -51,6 +51,7 @@ export const AboutMe = () => {
 
                     <button className="curriculum">
                         <a
+                            className="curriculumLink"
                             href={curriculum}
                             download="Curriculum Vitae - Felipe Santiago Morais">
                             Download my Curriculum Vitae
@@ -97,41 +98,6 @@ const Container = styled.section`
             background-color: ${({ theme }) => theme.tertiaryColor};
             border-radius: 0.8rem;
             transition: background-color .3s;
-        }
-
-        .curriculum {
-            text-align: center;
-            color: ${({ theme }) => theme.secondaryTextColor};
-            font-size: ${fonts.fontSizeMedium};
-            cursor: pointer;
-            border: .2rem solid transparent;
-            padding: 1rem;
-            border-radius: 0 1.6rem 0 1.6rem;
-            background-color: ${({ theme }) => theme.secondaryColor};
-            overflow: hidden;
-            z-index: 1;
-            ${secondLinkHoverEffect("rgba(0,0,0,.3)", "1")}
-
-            &:hover {
-                border-color: ${({ theme }) => theme.textColor};
-                color: ${({ theme }) => theme.textColor};
-            }
-            
-            &:hover > p span {
-                color: ${({ theme }) => theme.textColor};
-            }
-
-            a {
-                position: relative;
-                color: ${({theme}) => theme.secondaryTextColor};
-                transition: .3s;
-                
-                span {
-                    transition: .3s;
-                    font-weight: 500;
-                    color: ${({ theme }) => theme.secondaryTextColor};
-                }
-            }
         }
 
         .aboutMe {
@@ -200,6 +166,34 @@ const Container = styled.section`
                         }
                     }
                 }
+
+            }
+
+            .curriculum {
+                text-align: center;
+                font-size: ${fonts.fontSizeMedium};
+                cursor: pointer;
+                border: .2rem solid transparent;
+                padding: 1rem;
+                border-radius: 0 1.6rem 0 1.6rem;
+                background-color: ${({ theme }) => theme.secondaryColor};
+                overflow: hidden;
+                z-index: 1;
+                ${secondLinkHoverEffect("rgba(0,0,0,.3)", "1")}
+    
+                &:hover {
+                    border-color: ${({ theme }) => theme.textColor};
+                }
+                
+                &:hover > .curriculumLink {
+                    color: ${({ theme }) => theme.textColor};
+                }
+    
+                .curriculumLink {
+                    position: relative;
+                    color: ${({ theme }) => theme.secondaryTextColor};
+                    transition: .3s;
+                }
             }
         }
     }
@@ -216,12 +210,10 @@ const Container = styled.section`
                 font-size: ${fonts.fontSizeMedium};
             }
 
-            .aboutMe {
-                .whatIDo {
-                    .abilitiesList {
-                        .ability {
-                        }
-                    }
+            .curriculum {
+                .curriculumLink {
+                    font-size: ${fonts.fontSizeSmall};
+                    font-weight: bold;
                 }
             }
         }
