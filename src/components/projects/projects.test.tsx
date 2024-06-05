@@ -11,7 +11,7 @@ describe("<Projects />", () => {
     it("should render all projects categories", () => {
         render(<Projects />);
         const categoriesList = document.querySelectorAll(".category");
-        expect(categoriesList).toHaveLength(6);
+        expect(categoriesList).toHaveLength(8);
     })
 
     it("should hightlight the button when it is clicked", () => {
