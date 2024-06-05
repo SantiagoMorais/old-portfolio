@@ -5,47 +5,54 @@ import { ThemeContext } from "@contexts/themeContext"
 import { ProjectsList } from "./projectsList"
 import { useGitHubAutomatedRepos } from "github-automated-repos"
 
-type TCategory = "portfolio" | "typescript" | "react" | "tests" | "context-api" | "javascript" | "react-testing-library" | "html5" | "css3";
+type TCategory = "portfolio" | "typescript" | "react" | "tests" | "context-api" | "javascript" | "react-testing-library" | "html5" | "css3" | "redux" | "tailwindcss";
 
 export const Projects = () => {
     const { theme } = useContext(ThemeContext);
     const [category, setCategory] = useState<TCategory>("portfolio")
     const data = useGitHubAutomatedRepos("SantiagoMorais", category)
-    
+    const personalPortfolio = useGitHubAutomatedRepos("SantiagoMorais", "personal-portfolio")
+    console.log(personalPortfolio);
+
     const handleCategory = (category: TCategory) => {
         setCategory(category);
     }
 
-    const categoryList: {name: string, topic: TCategory}[] = [
-        {name: "See All", topic: "portfolio"},
-        {name: "React", topic: "react"},
-        {name: "TypeScript", topic: "typescript"},
-        {name: "JavaScript", topic: "javascript"},
-        {name: "Integrative Tests", topic: "tests"},
-        {name: "Context API", topic: "context-api"},
+    const categoryList: { name: string, topic: TCategory }[] = [
+        { name: "See All", topic: "portfolio" },
+        { name: "React", topic: "react" },
+        { name: "TypeScript", topic: "typescript" },
+        { name: "JavaScript", topic: "javascript" },
+        { name: "Integrative Tests", topic: "tests" },
+        { name: "Context API", topic: "context-api" },
+        { name: "Redux", topic: "redux" },
+        { name: "Tailwind CSS", topic: "tailwindcss" },
     ]
-    
+
     return (
         <Container id="myProjects" theme={theme}>
             <div className="content">
                 <h2 className="title">My Projects</h2>
                 <p className="portfolioDescription">
                     This portfolio was developed using React and TypeScript, powered by the Vite application. Integrative tests are currently being implemented using Vitest and React Testing Library. Finally, the project's styling is being crafted with the Style-Components library.
+                    <br />
+                    See my the github repository of my personal portfolio<a className="personalPortfolioLink" href={personalPortfolio[0]?.html_url} target="_blank"> here</a>.
+                    <br />
                     See more projects below:
                 </p>
                 <ul className="categoryList">
-                    {categoryList.map((categoryItem, index) => 
-                    <li className="category" key={index}>
-                        <button 
-                        className={`button ${category === categoryItem.topic && "selected"}`}
-                        data-testid={categoryItem.topic}
-                        onClick={() => handleCategory(categoryItem.topic)}>
-                            <p className="buttonLabel">{categoryItem.name}</p>
-                        </button>
-                    </li>
+                    {categoryList.map((categoryItem, index) =>
+                        <li className="category" key={index}>
+                            <button
+                                className={`button ${category === categoryItem.topic && "selected"}`}
+                                data-testid={categoryItem.topic}
+                                onClick={() => handleCategory(categoryItem.topic)}>
+                                <p className="buttonLabel">{categoryItem.name}</p>
+                            </button>
+                        </li>
                     )}
                 </ul>
-                <ProjectsList data={data}/>
+                <ProjectsList data={data} />
             </div>
         </Container>
     )
@@ -92,6 +99,10 @@ const Container = styled.section`
             font-size: ${fonts.fontSizeSmall};
             text-align: center;
             max-width: 100rem;
+
+            .personalPortfolioLink {
+                color: ${({theme}) => theme.secondaryColor};
+            }
         }
 
         .categoryList {
@@ -109,7 +120,7 @@ const Container = styled.section`
                 .button {
                     width: 100%;
                     min-width: 15rem;
-                    background: ${({theme}) => theme.tertiaryColor};
+                    background: ${({ theme }) => theme.tertiaryColor};
                     border: .1rem solid transparent;
                     border-radius: .8rem;
                     padding: .9rem;
@@ -118,24 +129,24 @@ const Container = styled.section`
                     transition: .3s;
 
                     &.selected {
-                        background: ${({theme}) => theme.secondaryColor};
-                        color: ${({theme}) => theme.secondaryTextColor};
+                        background: ${({ theme }) => theme.secondaryColor};
+                        color: ${({ theme }) => theme.secondaryTextColor};
 
                         .buttonLabel {
-                            color: ${({theme}) => theme.secondaryTextColor};
+                            color: ${({ theme }) => theme.secondaryTextColor};
                         }
                     }
                     
                     &:hover {
-                        border-color: ${({theme}) => theme.textColor};
+                        border-color: ${({ theme }) => theme.textColor};
                     }
         
-                    ${({theme}) => secondLinkHoverEffect(theme.secondaryColor, ".6")}
+                    ${({ theme }) => secondLinkHoverEffect(theme.secondaryColor, ".6")}
 
                     .buttonLabel {
                         position: relative;
                         font-weight: 500;
-                        color: ${({theme}) => theme.textColor};
+                        color: ${({ theme }) => theme.textColor};
                         font-size: ${fonts.fontSizeSmall};
                         transition: .3s;
                     }
