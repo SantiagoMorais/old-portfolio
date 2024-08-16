@@ -34,9 +34,9 @@ export const ProjectsList: React.FC<IProjectsListProps> = ({ data }) => {
 
     useEffect(() => {
         const handleBodyOverflow = () => {
-            showImage !== null 
-            ? document.body.style.overflowY = 'hidden' 
-            : document.body.style.overflowY = 'scroll'
+            showImage !== null
+                ? document.body.style.overflowY = 'hidden'
+                : document.body.style.overflowY = 'scroll'
         }
         handleBodyOverflow();
     }, [showImage])
@@ -59,9 +59,12 @@ export const ProjectsList: React.FC<IProjectsListProps> = ({ data }) => {
                         )}
                     </div>
                     <div className="buttons">
-                        <button className="button">
-                            <a href={project.homepage} target="_blank">Web Page</a>
-                        </button>
+                        {
+                            project.homepage !== "" &&
+                            <button className="button">
+                                <a href={project.homepage} target="_blank">Web Page</a>
+                            </button>
+                        }
                         <button className="button">
                             <a href={project.html_url} target="_blank">Github repository</a>
                         </button>
