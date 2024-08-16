@@ -29,7 +29,8 @@
       "@components/*": ["components/*"],
       "@styles/*": ["styles/*"],
       "@contexts/*": ["contexts/*"],
-      "@json/*": ["json/*"]
+      "@json/*": ["json/*"],
+      "@docs/*": ["docs/*"]
     },
     "types": ["vitest/globals", "@testing-library/jest-dom"]
   },

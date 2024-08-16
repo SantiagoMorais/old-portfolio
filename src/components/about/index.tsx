@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { componentsGap, fonts, secondLinkHoverEffect } from "@styles/variables";
 import { useContext } from "react";
 import styled from "styled-components"
-import curriculum from "@assets/docs/Felipe Santiago Morais - Curriculum Vitae Frontend Engineer.pdf"
+import curriculum from "@docs/Curriculum July 2024 - Felipe Santiago.pdf"
 
 export const AboutMe = () => {
     const { theme } = useContext(ThemeContext);
