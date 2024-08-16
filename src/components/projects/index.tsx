@@ -1,4 +1,4 @@
-import { componentsGap, fonts, secondLinkHoverEffect } from "@styles/variables"
+import { componentsGap, fonts, githubRepositoriesLink, secondLinkHoverEffect } from "@utils/variables"
 import styled from "styled-components"
 import { useContext, useState } from "react"
 import { ThemeContext } from "@contexts/themeContext"
@@ -53,6 +53,13 @@ export const Projects = () => {
                     )}
                 </ul>
                 <ProjectsList data={data} />
+                <a
+                    href={githubRepositoriesLink}
+                    className="repositoriesLink"
+                    target="_blank"
+                >
+                    <p className="buttonLabel">See more projects on my GitHub Repository</p>
+                </a>
             </div>
         </Container>
     )
@@ -101,7 +108,7 @@ const Container = styled.section`
             max-width: 100rem;
 
             .personalPortfolioLink {
-                color: ${({theme}) => theme.secondaryColor};
+                color: ${({ theme }) => theme.secondaryColor};
             }
         }
 
@@ -116,7 +123,6 @@ const Container = styled.section`
                 flex-basis: 0;
                 margin-bottom: 1rem;
 
-                
                 .button {
                     width: 100%;
                     min-width: 15rem;
@@ -151,6 +157,33 @@ const Container = styled.section`
                         transition: .3s;
                     }
                 }
+            }
+        }
+
+        .repositoriesLink {
+            width: fit-content;
+            min-width: 15rem;
+            background: ${({ theme }) => theme.tertiaryColor};
+            border: .1rem solid transparent;
+            border-radius: .8rem;
+            padding: .9rem;
+            overflow: hidden;
+            cursor: pointer;
+            transition: .3s;
+            color: ${({ theme }) => theme.textColor};
+
+            &:hover {
+                border-color: ${({ theme }) => theme.textColor};
+            }
+
+            ${({ theme }) => secondLinkHoverEffect(theme.secondaryColor, ".6")}
+
+            .buttonLabel {
+                position: relative;
+                font-weight: 500;
+                color: ${({ theme }) => theme.textColor};
+                font-size: ${fonts.fontSizeSmall};
+                transition: .3s;
             }
         }
     }

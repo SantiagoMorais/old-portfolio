@@ -5,7 +5,7 @@ import styled from "styled-components";
 import skillsData from "@json/index.json";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { faBook, faCode, faKey, faLaptopCode, faTools } from "@fortawesome/free-solid-svg-icons";
-import { componentsGap, fonts } from "@styles/variables";
+import { componentsGap, fonts } from "@utils/variables";
 
 const iconMapping: Record<string, IconDefinition> = {
     code: faCode,

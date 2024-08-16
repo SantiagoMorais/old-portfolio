@@ -2,7 +2,7 @@ import styled from "styled-components"
 import heroImage from "@assets/imgs/felipe-image.png"
 import { useContext } from "react"
 import { ThemeContext } from "@contexts/themeContext"
-import { componentsGap, fonts, linkHoverEffect } from "@styles/variables"
+import { componentsGap, fonts, linkHoverEffect } from "@utils/variables"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCss3Alt, faHtml5, faJsSquare, faReact } from "@fortawesome/free-brands-svg-icons"
 

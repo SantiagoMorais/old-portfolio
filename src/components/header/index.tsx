@@ -2,7 +2,7 @@ import { ThemeTogglerButton } from "@components/themeTogglerButton";
 import { ThemeContext } from "@contexts/themeContext";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { fonts, linkHoverEffect } from "@styles/variables";
+import { fonts, linkHoverEffect } from "@utils/variables";
 import { useContext, useState } from "react";
 import styled from "styled-components";
 

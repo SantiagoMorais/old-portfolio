@@ -6,6 +6,7 @@ export const whatsappMessage: string = "Hi, Felipe! I got your contact from your
 export const email: string = "contatofelipesantiago@gmail.com"
 export const githubUsername: string = "SantiagoMorais"
 export const linkedinUsername: string = "felipe santiago morais".split(" ").join("-")
+export const githubRepositoriesLink: string = "https://github.com/SantiagoMorais?tab=repositories"
 
 export interface IColors {
     primaryColor: string,

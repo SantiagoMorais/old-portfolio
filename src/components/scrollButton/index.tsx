@@ -1,7 +1,7 @@
 import { ThemeContext } from "@contexts/themeContext"
 import { faArrowUp } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { fonts } from "@styles/variables"
+import { fonts } from "@utils/variables"
 import { useContext } from "react"
 import styled from "styled-components"
 
@@ -11,7 +11,7 @@ export const ScrollButton = () => {
     const handleScroll = () => {
         window.scrollTo({
             top: 0,
-            behavior: 'smooth',   
+            behavior: 'smooth',
         });
     }
 
@@ -54,7 +54,7 @@ const Button = styled.button`
         left: 0;
         height: 100%;
         width: 100%;
-        background: ${({theme}) => theme.secondaryColor};
+        background: ${({ theme }) => theme.secondaryColor};
         opacity: 0;
         transform: scaleY(0);
         transform-origin: bottom;

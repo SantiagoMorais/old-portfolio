@@ -2,7 +2,7 @@ import { ThemeContext } from "@contexts/themeContext"
 import { faLinkedin, faSquareGithub, faSquareWhatsapp } from "@fortawesome/free-brands-svg-icons"
 import { faAt } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { email, fonts, githubUsername, linkHoverEffect, linkedinUsername, phoneNumber, whatsappMessage } from "@styles/variables"
+import { email, fonts, githubUsername, linkHoverEffect, linkedinUsername, phoneNumber, whatsappMessage } from "@utils/variables"
 import { useContext } from "react"
 import styled from "styled-components"
 

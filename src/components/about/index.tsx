@@ -1,7 +1,7 @@
 import { ThemeContext } from "@contexts/themeContext";
 import { faFlask, faLaptopCode, faTools } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { componentsGap, fonts, secondLinkHoverEffect } from "@styles/variables";
+import { componentsGap, fonts, secondLinkHoverEffect } from "@utils/variables";
 import { useContext } from "react";
 import styled from "styled-components"
 import curriculum from "@docs/Curriculum July 2024 - Felipe Santiago.pdf"

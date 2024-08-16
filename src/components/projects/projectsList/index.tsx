@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import styled from "styled-components"
-import { fonts } from "@styles/variables";
+import { fonts } from "@utils/variables";
 import { ThemeContext } from "@contexts/themeContext";
 import imageNotFound from "@assets/imgs/image-not-found.jpg"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

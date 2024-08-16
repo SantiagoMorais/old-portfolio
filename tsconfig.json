@@ -30,7 +30,8 @@
       "@styles/*": ["styles/*"],
       "@contexts/*": ["contexts/*"],
       "@json/*": ["json/*"],
-      "@docs/*": ["docs/*"]
+      "@docs/*": ["docs/*"],
+      "@utils/*": ["utils/*"]
     },
     "types": ["vitest/globals", "@testing-library/jest-dom"]
   },

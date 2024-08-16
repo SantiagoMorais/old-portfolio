@@ -2,7 +2,7 @@ import { fireEvent, render, screen } from "@testing-library/react"
 import { ThemeTogglerButton } from "."
 import { ThemeProvider } from "@contexts/themeContext"
 import { App } from "App"
-import { darkColors, lightColors } from "@styles/variables"
+import { darkColors, lightColors } from "@utils/variables"
 
 describe('<ThemeTogglerButton /> functionalities', () => {
     it('should render the button correctly', () => {

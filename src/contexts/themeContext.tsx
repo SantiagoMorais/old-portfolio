@@ -1,21 +1,21 @@
-import { IColors, lightColors } from "@styles/variables";
-import React, {  createContext, useEffect, useState } from "react";
+import { IColors, lightColors } from "@utils/variables";
+import React, { createContext, useEffect, useState } from "react";
 
 interface IThemeContext {
     theme: IColors,
     setTheme: React.Dispatch<React.SetStateAction<IColors>>,
 }
 
-export const ThemeContext = createContext<IThemeContext>({theme: lightColors, setTheme: () => {}})
+export const ThemeContext = createContext<IThemeContext>({ theme: lightColors, setTheme: () => { } })
 
 interface IThemeProviderProps {
     children: React.ReactNode,
 }
 
-export const ThemeProvider: React.FC<IThemeProviderProps> = ({children}) => {
+export const ThemeProvider: React.FC<IThemeProviderProps> = ({ children }) => {
     const localTheme = localStorage.getItem('portfolioTheme');
     const storageTheme = localTheme ? JSON.parse(localTheme) : lightColors;
-    
+
     const [theme, setTheme] = useState<IColors>(storageTheme)
 
     useEffect(() => {
@@ -23,7 +23,7 @@ export const ThemeProvider: React.FC<IThemeProviderProps> = ({children}) => {
     }, [theme])
 
     return (
-        <ThemeContext.Provider value={{theme, setTheme}}>
+        <ThemeContext.Provider value={{ theme, setTheme }}>
             {children}
         </ThemeContext.Provider>
     )
