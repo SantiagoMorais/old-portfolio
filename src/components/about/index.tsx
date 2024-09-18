@@ -4,7 +4,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { componentsGap, fonts, secondLinkHoverEffect } from "@utils/variables";
 import { useContext } from "react";
 import styled from "styled-components"
-import curriculum from "@docs/Curriculum July 2024 - Felipe Santiago.pdf"
+import curriculumPT from "@docs/Currículo atualizado em português 2024-Set.pdf"
+import curriculumEN from "@docs/Currículo atualizado em inglês 2024-Set.pdf"
 
 export const AboutMe = () => {
     const { theme } = useContext(ThemeContext);
@@ -49,14 +50,25 @@ export const AboutMe = () => {
                         </ul>
                     </div>
 
-                    <button className="curriculum">
+                    <p className="curriculumTitle">Download my Curriculum Vitae</p>
+                    <div className="curriculumLinks">
+                    <div className="curriculum">
                         <a
                             className="curriculumLink"
-                            href={curriculum}
-                            download="Curriculum Vitae - Felipe Santiago Morais">
-                            Download my Curriculum Vitae
+                            href={curriculumPT}
+                            download="Curriculum Vitae pt-BR - Felipe Santiago Morais">
+                            pt-BR
                         </a>
-                    </button>
+                    </div>
+                    <div className="curriculum">
+                        <a
+                            className="curriculumLink"
+                            href={curriculumEN}
+                            download="Curriculum Vitae en-US - Felipe Santiago Morais">
+                           en-US
+                        </a>
+                    </div>
+                </div>
                 </div>
             </div>
         </Container>
@@ -169,30 +181,52 @@ const Container = styled.section`
 
             }
 
-            .curriculum {
-                text-align: center;
+            .curriculumTitle {
                 font-size: ${fonts.fontSizeMedium};
-                cursor: pointer;
-                border: .2rem solid transparent;
-                padding: 1rem;
-                border-radius: 0 1.6rem 0 1.6rem;
-                background-color: ${({ theme }) => theme.secondaryColor};
-                overflow: hidden;
-                z-index: 1;
-                ${secondLinkHoverEffect("rgba(0,0,0,.3)", "1")}
-    
-                &:hover {
-                    border-color: ${({ theme }) => theme.textColor};
+                position: relative;
+                text-align: center;
+
+                &::after {
+                    content: "";
+                    height: .2rem;
+                    width: 105%;
+                    background: ${({theme}) => theme.secondaryColor};
+                    position: absolute;
+                    bottom: -.2rem;
+                    left: -2.5%;
                 }
+            }
+
+            .curriculumLinks {
+                display: flex;
+                gap: 2rem;
+                flex-wrap: wrap;
                 
-                &:hover > .curriculumLink {
-                    color: ${({ theme }) => theme.textColor};
-                }
-    
-                .curriculumLink {
-                    position: relative;
-                    color: ${({ theme }) => theme.secondaryTextColor};
-                    transition: .3s;
+                .curriculum {
+                    text-align: center;
+                    font-size: ${fonts.fontSizeMedium};
+                    cursor: pointer;
+                    border: .2rem solid transparent;
+                    padding: 1rem;
+                    border-radius: 0 1.6rem 0 1.6rem;
+                    background-color: ${({ theme }) => theme.secondaryColor};
+                    overflow: hidden;
+                    z-index: 1;
+                    ${secondLinkHoverEffect("rgba(0,0,0,.3)", "1")}
+                    
+                    &:hover {
+                        border-color: ${({ theme }) => theme.textColor};
+                    }
+                    
+                    &:hover > .curriculumLink {
+                        color: ${({ theme }) => theme.textColor};
+                    }
+                    
+                    .curriculumLink {
+                        position: relative;
+                        color: ${({ theme }) => theme.secondaryTextColor};
+                        transition: .3s;
+                    }
                 }
             }
         }
