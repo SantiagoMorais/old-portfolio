@@ -1,7 +1,7 @@
 {
     "skills": [
         {
-            "category": "Technical Proficiencies",
+            "category": "Frontend Technologies",
             "icon": "code",
             "list": [
                 "React JS",
@@ -10,7 +10,22 @@
                 "HTML5",
                 "CSS3",
                 "Redux",
-                "Context API"
+                "Context API",
+                "NextJS"
+            ]
+        },
+        {
+            "category": "Backend Technologies",
+            "icon": "backend",
+            "list": [
+                "JavaScript",
+                "TypeScript",
+                "NodeJS",
+                "ExpressJS",
+                "Fastify",
+                "Docker",
+                "SQL",
+                "Prisma / Drizzle-ORM"
             ]
         },
         {
@@ -23,7 +38,8 @@
                 "Figma",
                 "Jest",
                 "Testing Library",
-                "Vitest"
+                "Vitest",
+                "TailwindCSS"
             ]
         },
         {
