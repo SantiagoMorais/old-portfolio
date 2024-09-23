@@ -1,10 +1,10 @@
-import {  ThemeProvider } from "@contexts/themeContext";
+import { ThemeProvider } from "@contexts/themeContext";
 import { Home } from "@components/home";
 
 export const App = () => {
   return (
     <ThemeProvider>
-        <Home />
+      <Home />
     </ThemeProvider>
-  )
-}
+  );
+};

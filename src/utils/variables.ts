@@ -1,56 +1,64 @@
-import { DefaultTheme } from "styled-components"
+import { DefaultTheme } from "styled-components";
 
 //constacts data
 export const phoneNumber: number = 5531996951033;
-export const whatsappMessage: string = "Hi, Felipe! I got your contact from your portfolio.".split(" ").join("%20")
-export const email: string = "contatofelipesantiago@gmail.com"
-export const githubUsername: string = "SantiagoMorais"
-export const linkedinUsername: string = "felipe santiago morais".split(" ").join("-")
-export const githubRepositoriesLink: string = "https://github.com/SantiagoMorais?tab=repositories"
+export const whatsappMessage: string =
+  "Hi, Felipe! I got your contact from your portfolio.".split(" ").join("%20");
+export const email: string = "contatofelipesantiago@gmail.com";
+export const githubUsername: string = "SantiagoMorais";
+export const linkedinUsername: string = "felipe santiago morais"
+  .split(" ")
+  .join("-");
+export const githubRepositoriesLink: string =
+  "https://github.com/SantiagoMorais?tab=repositories";
 
 export interface IColors {
-    primaryColor: string,
-    secondaryColor: string,
-    tertiaryColor: string,
-    textColor: string,
-    secondaryTextColor: string
+  primaryColor: string;
+  secondaryColor: string;
+  tertiaryColor: string;
+  textColor: string;
+  secondaryTextColor: string;
 }
 
 interface IFonts {
-    fontFamily: string,
-    fontSizeSmall: string,
-    fontSizeMedium: string,
-    fontSizeLarge: string,
-    fontSizeExtraLarge: string
+  fontFamily: string;
+  fontSizeSmall: string;
+  fontSizeMedium: string;
+  fontSizeLarge: string;
+  fontSizeExtraLarge: string;
 }
 
 export const lightColors: IColors = {
-    primaryColor: "#F6F5F5",
-    secondaryColor: "#FBA834",
-    tertiaryColor: "#B6BBC4",
-    textColor: "#000000",
-    secondaryTextColor: "#ffffff",
-}
+  primaryColor: "#F6F5F5",
+  secondaryColor: "#FBA834",
+  tertiaryColor: "#B6BBC4",
+  textColor: "#000000",
+  secondaryTextColor: "#ffffff",
+};
 
 export const darkColors: IColors = {
-    primaryColor: "#000000",
-    secondaryColor: "#F4CE14",
-    tertiaryColor: "#191919",
-    textColor: "#ffffff",
-    secondaryTextColor: "#000000",
-}
+  primaryColor: "#000000",
+  secondaryColor: "#F4CE14",
+  tertiaryColor: "#191919",
+  textColor: "#ffffff",
+  secondaryTextColor: "#000000",
+};
 
 export const fonts: IFonts = {
-    fontFamily: "'Roboto', sans-serif",
-    fontSizeSmall: "1.6rem",
-    fontSizeMedium: "2.4rem",
-    fontSizeLarge: "3rem",
-    fontSizeExtraLarge: "4.5rem",
-}
+  fontFamily: "'Roboto', sans-serif",
+  fontSizeSmall: "1.6rem",
+  fontSizeMedium: "2.4rem",
+  fontSizeLarge: "3rem",
+  fontSizeExtraLarge: "4.5rem",
+};
 
 export const componentsGap = "3rem";
 
-export const linkHoverEffect = (theme: DefaultTheme, transformOrigin: string, transformDestiny: string,) => `
+export const linkHoverEffect = (
+  theme: DefaultTheme,
+  transformOrigin: string,
+  transformDestiny: string
+) => `
     transition: .3s;
     position: relative;
 
@@ -77,7 +85,10 @@ export const linkHoverEffect = (theme: DefaultTheme, transformOrigin: string, tr
     }
 `;
 
-export const secondLinkHoverEffect = (backgroundColor: string, opacity: string) => `
+export const secondLinkHoverEffect = (
+  backgroundColor: string,
+  opacity: string
+) => `
     transition: .5s;
     position: relative;
 
@@ -105,4 +116,4 @@ export const secondLinkHoverEffect = (backgroundColor: string, opacity: string) 
         transform: scaleX(0);
         transform-origin: right;
     }
-`
+`;

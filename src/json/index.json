@@ -1,70 +1,70 @@
 {
-    "skills": [
-        {
-            "category": "Frontend Technologies",
-            "icon": "code",
-            "list": [
-                "React JS",
-                "JavaScript",
-                "TypeScript",
-                "HTML5",
-                "CSS3",
-                "Redux",
-                "Context API",
-                "NextJS"
-            ]
-        },
-        {
-            "category": "Backend Technologies",
-            "icon": "backend",
-            "list": [
-                "JavaScript",
-                "TypeScript",
-                "NodeJS",
-                "ExpressJS",
-                "Fastify",
-                "Docker",
-                "SQL",
-                "Prisma / Drizzle-ORM"
-            ]
-        },
-        {
-            "category": "Tools",
-            "icon": "tools",
-            "list": [
-                "Visual Studio Code",
-                "GitHub",
-                "Git",
-                "Figma",
-                "Jest",
-                "Testing Library",
-                "Vitest",
-                "TailwindCSS"
-            ]
-        },
-        {
-            "category": "React Libraries",
-            "icon": "book",
-            "list": [
-                "Styled-Components",
-                "Axios",
-                "React-Query",
-                "React-Hook-Form",
-                "React-Router-Dom"
-            ]
-        },
-        {
-            "category": "Key Attributes",
-            "icon": "key",
-            "list": [
-                "Organized",
-                "Great Receiving Feedbacks",
-                "Proactive Collaboration",
-                "Commitment",
-                "Adaptability",
-                "Resilience",
-                "Attention to the Details"
-            ]
-        }
-    ]
+  "skills": [
+    {
+      "category": "Frontend Technologies",
+      "icon": "code",
+      "list": [
+        "React JS",
+        "JavaScript",
+        "TypeScript",
+        "HTML5",
+        "CSS3",
+        "Redux",
+        "Context API",
+        "NextJS"
+      ]
+    },
+    {
+      "category": "Backend Technologies",
+      "icon": "backend",
+      "list": [
+        "JavaScript",
+        "TypeScript",
+        "NodeJS",
+        "ExpressJS",
+        "Fastify",
+        "Docker",
+        "SQL",
+        "Prisma / Drizzle-ORM"
+      ]
+    },
+    {
+      "category": "Tools",
+      "icon": "tools",
+      "list": [
+        "Visual Studio Code",
+        "GitHub",
+        "Git",
+        "Figma",
+        "Jest",
+        "Testing Library",
+        "Vitest",
+        "TailwindCSS"
+      ]
+    },
+    {
+      "category": "React Libraries",
+      "icon": "book",
+      "list": [
+        "Styled-Components",
+        "Axios",
+        "React-Query",
+        "React-Hook-Form",
+        "React-Router-Dom"
+      ]
+    },
+    {
+      "category": "Key Attributes",
+      "icon": "key",
+      "list": [
+        "Organized",
+        "Great Receiving Feedbacks",
+        "Proactive Collaboration",
+        "Commitment",
+        "Adaptability",
+        "Resilience",
+        "Attention to the Details"
+      ]
+    }
+  ]
 }

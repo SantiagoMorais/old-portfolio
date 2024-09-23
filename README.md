@@ -75,8 +75,8 @@ export const Home = () => {
       <Contacts />
       <ScrollButton />
     </Container>
-  )
-}
+  );
+};
 ```
 
 Let's explain the project passing through each component, starting by the top.
@@ -103,6 +103,7 @@ const links = [
       )}
   </ul>
 ```
+
 **globalStyle.tsx** - smooth scroll
 
 ```tsx
@@ -111,7 +112,7 @@ export const GlobalStyle = createGlobalStyle`
     html {
         scroll-behavior: smooth;
     }
-`
+`;
 ```
 
 ### 2. Hero
@@ -121,7 +122,11 @@ This section is the first impression of the user with the page. It contains the 
 In this component, into the header one and some others is used a `hover` effect that is repeated constantly. That way, to avoid duplicated codes, it was created a function that contains these style lines to be reused on my components.
 
 ```tsx
-export const linkHoverEffect = (theme: DefaultTheme, transformOrigin: string, transformDestiny: string,) => `
+export const linkHoverEffect = (
+  theme: DefaultTheme,
+  transformOrigin: string,
+  transformDestiny: string
+) => `
     transition: .3s;
     position: relative;
 
@@ -157,50 +162,52 @@ To write everything on a component would create a huge code. That way, to avoid 
 
 ```json
 {
-    "skills": [
-        {
-            "category": "Technical Proficiencies",
-            "icon": "code",
-            "list": [
-                "React JS",
-                "JavaScript",
-                "TypeScript",
-                "HTML5",
-                "CSS3",
-                "Redux",
-                "Context API"
-            ]
-        },
+  "skills": [
+    {
+      "category": "Technical Proficiencies",
+      "icon": "code",
+      "list": [
+        "React JS",
+        "JavaScript",
+        "TypeScript",
+        "HTML5",
+        "CSS3",
+        "Redux",
+        "Context API"
+      ]
+    }
     //...
-    ]
+  ]
 }
-
 ```
+
 That way, it is possible just to use a `map` method on this file to print this information on the screen.
 
-```tsx  
+```tsx
 import skillsData from "@json/index.json";
 
 //...
-    <div div div className = "skillLists" >
-        { skillsData &&
-        skillsData.skills.map((skill, index) => (
-            <div className="skill" key={index}>
-                <div className="subtitle">
-                    <FontAwesomeIcon
-                        className="icon"
-                        icon={iconMapping[skill.icon] || defaultIcon}
-                    />
-                    <h3 className="skillTitle">{skill.category}</h3>
-                </div>
-                <ul className="list">
-                    {skill.list.map((item, idx) => (
-                        <li className="item" key={idx}>{item}</li>
-                    ))}
-                </ul>
-            </div>
-        ))}
-    </div >
+<div div div className="skillLists">
+  {skillsData &&
+    skillsData.skills.map((skill, index) => (
+      <div className="skill" key={index}>
+        <div className="subtitle">
+          <FontAwesomeIcon
+            className="icon"
+            icon={iconMapping[skill.icon] || defaultIcon}
+          />
+          <h3 className="skillTitle">{skill.category}</h3>
+        </div>
+        <ul className="list">
+          {skill.list.map((item, idx) => (
+            <li className="item" key={idx}>
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))}
+</div>;
 ```
 
 ### 4. Projects
@@ -210,6 +217,7 @@ The main focus is on here, to show my main GitHub projects, it was used a librar
 What facilitates the use of this library is that you can change your portfolio just from your GitHub account, then it's not needed to access your repository to change the code directly.
 
 The "about" section of your repository in GitHub, turns possible to add some information:
+
 - The description of your project;
 - The website of the project (I use Vercel, that fills this field automatically when the project deploy is made)
 - Topics field, that you can add keywords that describe your project.
@@ -217,7 +225,7 @@ The "about" section of your repository in GitHub, turns possible to add some inf
 Through the topics field the `useGitHubAutomatedRepos` hook access all your projects that have a specific keyword and create an array with them.
 
 The syntax is that:
-```const data = useGitHubAutomatedRepos("yourNickName", "keyWord")```
+`const data = useGitHubAutomatedRepos("yourNickName", "keyWord")`
 
 Every project that I would like to be published on my portfolio has the "portfolio" keyword. That way, using the "data" variable I can render all information about my projects on the screen, as its name, banner, description, topic, webpage, GitHub repository, and more.
 
@@ -234,22 +242,21 @@ If you are interested on it, access the documentation [Here](https://github.com/
 Using font-awesome icons and an `a` anchor tag, it's possible to visit my social media to contact me.
 
 ```tsx
-<ul ul className = "social" >
-    {
-        contacts.map((link, index) =>
-            <li className="link" key={index}>
-                <a href={link.href} target="_blank">
-                    <FontAwesomeIcon icon={link.icon} className="icon" />
-                </a>
-            </li>
-        )
-    }
-</ul >
+<ul ul className="social">
+  {contacts.map((link, index) => (
+    <li className="link" key={index}>
+      <a href={link.href} target="_blank">
+        <FontAwesomeIcon icon={link.icon} className="icon" />
+      </a>
+    </li>
+  ))}
+</ul>
 ```
 
 That way, my projects are detailed, and it is possible to understand my skills, what I'm focusing on, and how to contact me by my social media.
 
 ### How to execute the project
+
 - The project was created with [React-Vite](https://vitejs.dev).
 
 - To download the project, open the terminal in the VSCode and write the dependencies code installations: **npm install**
@@ -263,7 +270,6 @@ The package.json file already contains the version of the library in its data, s
 - Then, in the bottom-left window of **NPM SCRIPTS**, click on the **run** button next to package.json/dev vite.
 
 <img src='./src/assets/screenshots/instructions-path-2.bmp' alt="instructions path 2">
-
 
 - Finally, in the terminal, keep the **localhost** link will appear where the project will be running in your browser. Hover over it and click **Follow link**, or press the ctrl button on your keyboard and click on the **localhost**, and the page will open in your default browser.
 
@@ -294,6 +300,3 @@ After completing the [DevQuest](https://www.linkedin.com/school/devquest-dev-em-
 - Instagram - [@felipe.santiago.morais](https://www.instagram.com/felipe.santiago.morais)
 - Email - <a href="mailto:contatofelipesantiago@gmail.com" target="blank">contatofelipesantiago@gmail.com</a>
 - <a href="https://api.whatsapp.com/send?phone=5531996951033&text=Hi%2C%20Felipe%21%20I%20got%20your%20contact%20from%20your%20portfolio.">Whatsapp</a>
-
-
-

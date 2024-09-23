@@ -1,5 +1,5 @@
-import { createGlobalStyle } from "styled-components"
-import { fonts } from "../utils/variables"
+import { createGlobalStyle } from "styled-components";
+import { fonts } from "../utils/variables";
 
 export const GlobalStyle = createGlobalStyle`
     * {
@@ -29,4 +29,4 @@ export const GlobalStyle = createGlobalStyle`
     ul {
         list-style: none;
     }
-`
+`;
